@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Hotel VR360 - Khách Sạn Cao Cấp Nha Trang</title>
+    
+    <!-- Pannellum VR Viewer -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/toggle-btn.css">
+</head>
+<body>
+    <!-- Background VR360 -->
+    <div class="vr-background" id="panorama"></div>
+
+    <!-- Left Sidebar Menu (TRONG SUỐT NHƯ CŨ) -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="https://vtlink.link/wp-content/uploads/2025/06/Logo-Link-01-e1751259285169.png" 
+                 alt="Link Hotel" 
+                 onerror="this.style.display='none'">
+        </div>
+        
+        <nav class="sidebar-nav">
+            <button class="nav-item" data-page="introduction" title="Giới thiệu">
+                <i class="fa-solid fa-circle-info"></i>
+            </button>
+            
+            <button class="nav-item active" data-page="rooms" title="Phòng nghỉ">
+                <i class="fas fa-bed"></i>
+            </button>
+            
+            <button class="nav-item" data-page="vouchers" title="Ưu đãi">
+                <i class="fas fa-ticket-alt"></i>
+            </button>
+            
+            <button class="nav-item" data-page="facilities" title="Tiện ích">
+                <i class="fas fa-swimming-pool"></i>
+            </button>
+            
+            <button class="nav-item" data-page="policies" title="Chính sách">
+                <i class="fas fa-file-contract"></i>
+            </button>
+            
+            <button class="nav-item" data-page="contact" title="Liên hệ">
+                <i class="fas fa-phone"></i>
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Content Panel -->
+    <div class="content-panel glass-panel" id="contentPanel">
+        <div class="panel-header">
+            <h2 id="panelTitle">PHÒNG NGHỈ</h2>
+            <button class="close-btn" id="closePanel">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <!-- Search Section (Only for rooms page) -->
+        <div class="panel-search" id="searchSection">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" 
+                       id="searchInput" 
+                       placeholder="Tìm kiếm phòng..." 
+                       class="search-input">
+                <button class="search-clear-btn" id="searchClearBtn" style="display: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-content" id="panelContent">
+            <!-- Content loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Room Info Panel (Slide from right) -->
+    <div class="room-info-panel glass-panel" id="roomInfoPanel">
+        <!-- Toggle Button -->
+        <button class="room-info-toggle" id="toggleRoomInfo" title="Thu gọn/Mở rộng">
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        
+        <div class="room-info-header">
+            <h3 id="roomInfoTitle">Tên Phòng</h3>
+        </div>
+        
+        <div class="room-info-content" id="roomInfoContent">
+            <!-- Room details loaded dynamically -->
+        </div>
+        
+        <div class="room-info-footer">
+            <button class="btn-book-room" id="btnBookRoom">
+                <i class="fas fa-calendar-check"></i>
+                <span>Đặt Phòng</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="vi">VN</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <!-- Action Buttons (Below Language Toggle) -->
+    <div class="action-buttons" id="actionButtons">
+        <button class="action-btn toggle-buttons-btn" id="toggleButtonsBtn" title="Ẩn/Hiện">
+            <i class="fa-solid fa-eye-slash"></i>
+        </button>
+
+        <button class="action-btn" id="fullscreenBtn" title="Toàn màn hình">
+            <i class="fa-solid fa-expand"></i>
+        </button>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal glass-modal" id="bookingModal">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2>ĐẶT PHÒNG</h2>
+                <button class="close-btn" id="closeBookingModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <!-- Room Info Summary -->
+                    <div class="booking-room-summary">
+                        <div class="summary-image">
+                            <img id="bookingRoomImage" src="" alt="">
+                        </div>
+                        <div class="summary-details">
+                            <h3 id="bookingRoomName">Tên Phòng</h3>
+                            <p class="summary-price" id="bookingRoomPrice">0 VNĐ</p>
+                        </div>
+                    </div>
+
+                    <!-- Guest Information -->
+                    <div class="form-section">
+                        <h4><i class="fas fa-user"></i> Thông tin khách hàng</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="guestName">Họ và tên *</label>
+                                <input type="text" id="guestName" name="guestName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guestPhone">Số điện thoại *</label>
+                                <input type="tel" id="guestPhone" name="guestPhone" required>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="guestEmail">Email *</label>
+                                <input type="email" id="guestEmail" name="guestEmail" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking Details -->
+                    <div class="form-section">
+                        <h4><i class="fas fa-calendar"></i> Chi tiết đặt phòng</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="checkInDate">Ngày nhận phòng *</label>
+                                <input type="date" id="checkInDate" name="checkInDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkOutDate">Ngày trả phòng *</label>
+                                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="adults">Người lớn</label>
+                                <select id="adults" name="adults">
+                                    <option value="1">1 người</option>
+                                    <option value="2" selected>2 người</option>
+                                    <option value="3">3 người</option>
+                                    <option value="4">4 người</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="children">Trẻ em</label>
+                                <select id="children" name="children">
+                                    <option value="0" selected>0 trẻ</option>
+                                    <option value="1">1 trẻ</option>
+                                    <option value="2">2 trẻ</option>
+                                    <option value="3">3 trẻ</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="specialRequest">Yêu cầu đặc biệt</label>
+                                <textarea id="specialRequest" 
+                                          name="specialRequest" 
+                                          rows="3" 
+                                          placeholder="Vd: Giường phụ, tầng cao, gần thang máy..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div class="price-summary">
+                        <div class="summary-row">
+                            <span>Giá phòng (x <span id="numNights">1</span> đêm):</span>
+                            <span id="roomTotal">0 VNĐ</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Thuế & phí dịch vụ (10%):</span>
+                            <span id="taxFee">0 VNĐ</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Tổng cộng:</span>
+                            <span id="grandTotal">0 VNĐ</span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelBooking">Hủy</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check"></i>
+                            Xác nhận đặt phòng
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal glass-modal" id="successModal">
+        <div class="modal-content glass-panel success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Đặt phòng thành công!</h2>
+            <p>Chúng tôi đã nhận được yêu cầu đặt phòng của bạn.</p>
+            <p>Thông tin chi tiết đã được gửi đến email của bạn.</p>
+            <button class="btn btn-primary" id="closeSuccessModal">Đóng</button>
+        </div>
+    </div>
+
+    <!-- NEW BOOKING MODAL -->
+    <div class="modal" id="newBookingModal" style="display: none; align-items: center; justify-content: center;">
+        <div class="new-booking-modal-wrapper">
+            <button class="new-modal-close-btn" id="closeNewBookingModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="new-booking-container">
+                <!-- Left Column: Form -->
+                <div class="new-booking-left">
+                    <h2 class="new-booking-title">Thông tin đặt phòng</h2>
+                    
+                    <!-- Contact Info -->
+                    <div class="new-form-section">
+                        <h3 class="new-section-title">Thông tin liên hệ</h3>
+                        <div class="new-form-grid">
+                            <div class="new-form-group">
+                                <label>Họ và tên</label>
+                                <input type="text" id="newFullName" placeholder="Nhập họ và tên của bạn">
+                            </div>
+                            <div class="new-form-group">
+                                <label>Số điện thoại</label>
+                                <input type="tel" id="newPhone" placeholder="Nhập số điện thoại">
+                            </div>
+                        </div>
+                        
+                        <!-- Guest Counter -->
+                        <div class="new-guest-counter">
+                            <div class="new-counter-label">
+                                <i class="fas fa-users"></i>
+                                <span>Số lượng khách</span>
+                            </div>
+                            <div class="new-counter-controls">
+                                <button type="button" class="new-counter-btn" id="decreaseGuests">-</button>
+                                <span class="new-counter-value" id="guestCount">2</span>
+                                <button type="button" class="new-counter-btn" id="increaseGuests">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Calendar Section -->
+                    <div class="new-form-section">
+                        <h3 class="new-section-title">Thời gian lưu trú</h3>
+                        <div class="new-calendar-header">
+                            <button class="new-cal-nav" id="prevMonth">Tháng 8</button>
+                            <button class="new-cal-nav active" id="currentMonth">Tháng 9</button>
+                        </div>
+                        <div class="new-calendar">
+                            <div class="new-cal-weekdays">
+                                <span>CN</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span>
+                            </div>
+                            <div class="new-cal-days" id="calendarDays">
+                                <!-- Calendar days will be generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Summary -->
+                <div class="new-booking-right">
+                    <h3 class="new-summary-title">Tóm tắt đặt phòng</h3>
+                    
+                    <div class="new-room-info">
+                        <p class="new-room-name" id="summaryRoomName">-</p>
+                        <p class="new-room-type" id="summaryRoomType">-</p>
+                    </div>
+                    
+                    <div class="new-price-breakdown">
+                        <div class="new-price-row">
+                            <span>Giá phòng x <span id="summaryNights">0</span> đêm</span>
+                            <span id="summaryRoomPrice">0đ</span>
+                        </div>
+                        <div class="new-price-row">
+                            <span>Phí dịch vụ</span>
+                            <span id="summaryServiceFee">100.000đ</span>
+                        </div>
+                        <div class="new-price-row voucher-discount" id="voucherDiscountRow" style="display: none;">
+                            <span>Giảm giá voucher</span>
+                            <span class="discount-amount" id="summaryDiscount">-0đ</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Voucher Input -->
+                    <div class="new-voucher-section">
+                        <div class="new-voucher-input-wrapper">
+                            <input type="text" id="voucherInput" placeholder="Nhập mã voucher" class="new-voucher-input">
+                            <button type="button" id="applyVoucherBtn" class="new-apply-voucher-btn">Áp dụng</button>
+                        </div>
+                        <p class="voucher-message" id="voucherMessage"></p>
+                    </div>
+                    
+                    <div class="new-total-price">
+                        <span>Tổng cộng</span>
+                        <span id="summaryTotal">0đ</span>
+                    </div>
+                    
+                    <!-- Payment Methods -->
+                    <div class="new-payment-section">
+                        <h3 class="new-payment-title">Phương thức thanh toán</h3>
+                        <div class="new-payment-options">
+                            <label class="new-payment-option active">
+                                <input type="radio" name="paymentMethod" value="cash" checked>
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Thanh toán khi nhận phòng</span>
+                            </label>
+                            <label class="new-payment-option">
+                                <input type="radio" name="paymentMethod" value="vnpay">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4gjbAqR0JnLl8mAtJW8vNf8jqE2AsamE_ONIXxa4ohMZGidv67UmTRVn8gmy-bsBGpP9vyNcqmMIp8PjDtrv9zkfP_hYLk2arhM2Wdc5ReMMl1HJ9D3fKr8c8GSkNQcoVp92utnwggFoHxxL4my8ZWWVjzEChx_1K8BVhC6prm9NclQ_FcUzsXNvSpMLCI-5NbHxVmReO9_yJzlO9yFKSbug09rY9r33s_1XqLj9X9jUpLlyx96OPXMaP3Ui3s16-loSNOl5ONns" alt="VNPay" class="vnpay-logo">
+                                <span>Thanh toán online qua VNPay</span>
+                            </label>
+                        </div>
+                        <button class="new-booking-submit-btn" id="newBookingSubmit">Hoàn tất đặt phòng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR PAYMENT MODAL -->
+    <div class="modal" id="qrPaymentModal" style="display: none; align-items: center; justify-content: center;">
+        <div class="qr-modal-wrapper">
+            <div class="qr-modal-header">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6Cv1r1SatCUeb8gEEGOKkbMpYUh-eIheKrpQK_IWnuRRl-XjrjPklOxbjKzpOO2WS-ZmQpdcbM9CaC_9zObSxkAYzd2HUi0LDv6XQhyu7Y_dJ7knroGedqEWU9hSGEgh5DQm2oGjra8hnbOHwA9DHVeyNs0Q4iPtZtFIF4chjPYLLR6AFBWn__YUWeo2yPXftZBeOTePRYa2i-VZPccWlsTNF3dPKevDRQKsEyX7kW6x0oKf7YY9dpvhXW31XeorZBJ38GlfAXa8" alt="VNPay" class="qr-vnpay-logo">
+                <div class="qr-modal-text">
+                    <p class="qr-title">Thanh toán qua VNPay-QR</p>
+                    <p class="qr-subtitle">Sử dụng ứng dụng Ngân hàng hoặc Ví điện tử để quét mã QR</p>
+                </div>
+            </div>
+            
+            <div class="qr-code-container">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB4pasEyzQh1siQcHCUDt7tS7oqOQbbc6SuImEeS-QqQjzK1-s6-E3LvFbewTUlKh_ZosOGzoH4Vn2qa5MJ3d0o2IKUsDXv2oAFwuvdLV7hnyL0NgBDchYIcFkBSmvKvhDHbk7yGJ0NYU0BDUwppyxrzfOAveNBLEITbRKi5L7k3HtutqJ-2Ew7SAdYjCqXVGl0rON6Ya6xXXX8noOCu1E4rvyZS8dOAn_Q6zFYToKxRb_TDEVYUAgpN0yDHkoS6SqyZMHARiGNRg" alt="QR Code" class="qr-code-img">
+            </div>
+            
+            <div class="qr-details">
+                <div class="qr-detail-row">
+                    <span>Số tiền</span>
+                    <strong id="qrAmount">0 VND</strong>
+                </div>
+                <div class="qr-detail-row">
+                    <span>Mã đơn hàng</span>
+                    <strong id="qrOrderCode">-</strong>
+                </div>
+                <div class="qr-detail-row">
+                    <span>Nội dung</span>
+                    <strong>Thanh toan don hang</strong>
+                </div>
+            </div>
+            
+            <div class="qr-countdown">
+                <p class="qr-countdown-text">Mã QR hết hạn trong</p>
+                <div class="qr-timer">
+                    <div class="qr-timer-box">
+                        <div class="qr-timer-value" id="qrMinutes">14</div>
+                        <div class="qr-timer-label">Phút</div>
+                    </div>
+                    <div class="qr-timer-box">
+                        <div class="qr-timer-value" id="qrSeconds">59</div>
+                        <div class="qr-timer-label">Giây</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qr-progress">
+                <div class="qr-progress-bar" id="qrProgressBar"></div>
+                <p class="qr-redirect-text">Sẽ tự động chuyển hướng sau <span id="qrRedirectSeconds">3</span> giây...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING SUCCESS MODAL -->
+    <div class="modal" id="bookingSuccessModal" style="display: none; align-items: center; justify-content: center;">
+        <div class="success-voucher-wrapper">
+            <button class="success-close-btn" id="closeSuccessVoucher">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="success-confirmation">
+                <div class="success-check-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="success-main-title">Đặt phòng thành công!</h2>
+                <p class="success-subtitle">Cảm ơn bạn đã đặt phòng. Email xác nhận đã được gửi đến địa chỉ của bạn.</p>
+            </div>
+            
+            <div class="voucher-container">
+                <div class="voucher-main">
+                    <!-- Hotel Image & Info -->
+                    <div class="voucher-hotel">
+                        <img id="voucherHotelImg" src="" alt="Hotel" class="voucher-hotel-img">
+                        <div class="voucher-hotel-info">
+                            <p class="voucher-label">Phiếu đặt phòng</p>
+                            <h3 class="voucher-hotel-name" id="voucherHotelName">-</h3>
+                            <div class="voucher-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="voucherLocation">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="voucher-divider"></div>
+                    
+                    <!-- Booking Details Grid -->
+                    <div class="voucher-details-grid">
+                        <div class="voucher-detail">
+                            <p class="voucher-detail-label">Nhận phòng</p>
+                            <p class="voucher-detail-value" id="voucherCheckin">-</p>
+                        </div>
+                        <div class="voucher-detail">
+                            <p class="voucher-detail-label">Trả phòng</p>
+                            <p class="voucher-detail-value" id="voucherCheckout">-</p>
+                        </div>
+                        <div class="voucher-detail">
+                            <p class="voucher-detail-label">Số đêm</p>
+                            <p class="voucher-detail-value" id="voucherNights">-</p>
+                        </div>
+                        <div class="voucher-detail">
+                            <p class="voucher-detail-label">Số khách</p>
+                            <p class="voucher-detail-value" id="voucherGuests">-</p>
+                        </div>
+                        <div class="voucher-detail">
+                            <p class="voucher-detail-label">Loại phòng</p>
+                            <p class="voucher-detail-value" id="voucherRoomType">-</p>
+                        </div>
+                        <div class="voucher-detail">
+                            <p class="voucher-detail-label">Tên khách hàng</p>
+                            <p class="voucher-detail-value" id="voucherCustomerName">-</p>
+                        </div>
+                    </div>
+                    
+                    <div class="voucher-divider"></div>
+                    
+                    <!-- Payment Breakdown -->
+                    <div class="voucher-payment">
+                        <h3 class="voucher-payment-title">Chi tiết thanh toán</h3>
+                        <div class="voucher-payment-row">
+                            <span>Giá phòng x <span id="voucherPaymentNights">0</span> đêm</span>
+                            <span id="voucherPaymentRoom">0 VND</span>
+                        </div>
+                        <div class="voucher-payment-row">
+                            <span>Phí dịch vụ</span>
+                            <span id="voucherPaymentService">100,000 VND</span>
+                        </div>
+                        <div class="voucher-payment-row voucher-discount-row" id="voucherPaymentDiscountRow" style="display: none;">
+                            <span>Giảm giá voucher (<span id="voucherPaymentCode"></span>)</span>
+                            <span class="discount-amount" id="voucherPaymentDiscount">-0 VND</span>
+                        </div>
+                        <div class="voucher-divider-thin"></div>
+                        <div class="voucher-payment-total">
+                            <strong>Tổng thanh toán</strong>
+                            <strong id="voucherPaymentTotal">0 VND</strong>
+                        </div>
+                        <div class="voucher-payment-method">
+                            <span>Phương thức</span>
+                            <span id="voucherPaymentMethod">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- QR Code Column -->
+                <div class="voucher-qr-section">
+                    <p class="voucher-qr-title">Mã QR Check-in</p>
+                    <div class="voucher-qr-box">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqd2b3owmxU5hCtCL6T31lOjE6-7k3iraRzxWP0L9pVwjZ4oY2ZsHBeaVDEG-zA8i_a_eCUGq7L0pKCOc2YX1ebAOGVQdNSY3L-7ulScq1dFiRTj9M3vUHPkQfdd736zPtBE5OtAs_eWeCVpIC6-8R-j6AopAVqmnwIrKU8b4gqr2dcKsJT5lgWH_Zvk-LzZE-IGRgy8WB9rII1OehFQ2UgGPq9wdgMpZuc9NjdOlDrqlYK_YMezdKSpbawqhzY1bneZZ2p2cPdCs" alt="Check-in QR" class="voucher-qr-img">
+                    </div>
+                    <p class="voucher-qr-note">Sử dụng mã này tại quầy lễ tân để nhận phòng nhanh hơn.</p>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="success-actions">
+                <button class="success-action-btn primary">
+                    <i class="fas fa-download"></i>
+                    <span>Tải xuống phiếu</span>
+                </button>
+                <button class="success-action-btn secondary" id="backToHome">
+                    <i class="fas fa-home"></i>
+                    <span>Về trang chủ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

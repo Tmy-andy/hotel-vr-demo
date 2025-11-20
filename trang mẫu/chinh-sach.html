@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chính Sách Khách Sạn</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0077B6", // A professional and trustworthy blue
+            "background-light": "#F8FAFC", // A very light gray for light mode
+            "background-dark": "#0D1117", // A very dark blue/gray for dark mode
+          },
+          fontFamily: {
+            display: ["'Be Vietnam Pro'", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem", // 12px
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<div class="min-h-screen">
+<header class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-sm">
+<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-3xl">local_mall</span>
+<span class="text-xl font-bold text-slate-900 dark:text-slate-100">HotelName</span>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Trang chủ</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Về chúng tôi</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Loại phòng</a>
+<a class="font-semibold text-primary" href="#">Chính sách</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">Liên hệ</a>
+</nav>
+<button class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+          Đặt phòng
+        </button>
+</div>
+</header>
+<main class="pt-24 pb-16">
+<div class="container mx-auto px-6">
+<div class="text-center py-16">
+<h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Chính Sách Của Khách Sạn</h1>
+<p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            Để đảm bảo trải nghiệm tốt nhất cho quý khách, vui lòng tham khảo các chính sách và quy định của chúng tôi dưới đây.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-slate-800/50 p-8 rounded-lg border border-slate-200 dark:border-slate-700">
+<div class="flex items-center space-x-4">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">login</span>
+</div>
+<h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Nhận / Trả phòng</h2>
+</div>
+<div class="mt-6 space-y-4 text-slate-600 dark:text-slate-300">
+<p><strong class="font-medium text-slate-800 dark:text-slate-200">Giờ nhận phòng:</strong> sau 14:00</p>
+<p><strong class="font-medium text-slate-800 dark:text-slate-200">Giờ trả phòng:</strong> trước 12:00</p>
+<p>Nhận phòng sớm hoặc trả phòng muộn có thể được áp dụng phụ phí tùy theo tình trạng phòng trống.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800/50 p-8 rounded-lg border border-slate-200 dark:border-slate-700">
+<div class="flex items-center space-x-4">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">cancel</span>
+</div>
+<h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Hủy phòng</h2>
+</div>
+<div class="mt-6 space-y-4 text-slate-600 dark:text-slate-300">
+<p>Miễn phí hủy nếu yêu cầu được thực hiện trước 7 ngày so với ngày nhận phòng.</p>
+<p>Phí hủy phòng bằng 50% giá trị đặt phòng sẽ được áp dụng nếu hủy trong vòng 3-7 ngày.</p>
+<p>Không hoàn tiền nếu hủy trong vòng 72 giờ trước giờ nhận phòng.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800/50 p-8 rounded-lg border border-slate-200 dark:border-slate-700">
+<div class="flex items-center space-x-4">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">child_care</span>
+</div>
+<h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Trẻ em</h2>
+</div>
+<div class="mt-6 space-y-4 text-slate-600 dark:text-slate-300">
+<p>Miễn phí cho tối đa 2 trẻ em dưới 6 tuổi ở chung phòng với bố mẹ và sử dụng giường sẵn có.</p>
+<p>Trẻ em từ 6 đến 11 tuổi sẽ được tính phụ phí ăn sáng.</p>
+<p>Trẻ em từ 12 tuổi trở lên được tính như người lớn.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800/50 p-8 rounded-lg border border-slate-200 dark:border-slate-700">
+<div class="flex items-center space-x-4">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">pets</span>
+</div>
+<h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Vật nuôi</h2>
+</div>
+<div class="mt-6 space-y-4 text-slate-600 dark:text-slate-300">
+<p>Chúng tôi rất tiếc không thể tiếp nhận vật nuôi trong khuôn viên khách sạn để đảm bảo sự thoải mái và an toàn cho tất cả khách hàng.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800/50 p-8 rounded-lg border border-slate-200 dark:border-slate-700">
+<div class="flex items-center space-x-4">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">smoke_free</span>
+</div>
+<h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Hút thuốc</h2>
+</div>
+<div class="mt-6 space-y-4 text-slate-600 dark:text-slate-300">
+<p>Tất cả các phòng và khu vực công cộng trong nhà đều là khu vực không hút thuốc. Quý khách có thể hút thuốc tại các khu vực ngoài trời được chỉ định.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800/50 p-8 rounded-lg border border-slate-200 dark:border-slate-700">
+<div class="flex items-center space-x-4">
+<div class="bg-primary/10 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+</div>
+<h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Quy định chung</h2>
+</div>
+<div class="mt-6 space-y-4 text-slate-600 dark:text-slate-300">
+<p>Vui lòng xuất trình giấy tờ tùy thân hợp lệ (CMND/CCCD hoặc Hộ chiếu) khi làm thủ tục nhận phòng. Giữ im lặng và tôn trọng không gian chung.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+<div class="container mx-auto px-6 py-8 text-center text-slate-500 dark:text-slate-400">
+<p>© 2024 HotelName. Đã đăng ký bản quyền.</p>
+</div>
+</footer>
+</div>
+
+</body></html>

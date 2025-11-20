@@ -1,0 +1,72 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+*.min.css
+*.min.js
+*.map
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Cache
+.cache/
+.parcel-cache/
+.netlify/
+.vercel/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Production builds
+public/
+out/
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Optional
+TODO.md
+NOTES.md
+.private/

@@ -1,0 +1,176 @@
+{
+  "vouchers": [
+    {
+      "id": "EARLY20",
+      "code": "EARLY20",
+      "title": {
+        "vi": "Ưu Đãi Đặt Phòng Sớm",
+        "en": "Early Booking Offer"
+      },
+      "description": {
+        "vi": "Lên kế hoạch trước và tiết kiệm. Giảm ngay 20% giá phòng khi đặt trước 30 ngày.",
+        "en": "Plan ahead and save. Get 20% off room rates when booking 30 days in advance."
+      },
+      "discount": 20,
+      "discountType": "percent",
+      "badge": {
+        "text": {
+          "vi": "Giảm 20%",
+          "en": "20% Off"
+        },
+        "color": "primary"
+      },
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD7jR-XzTswM2WjItg0dlGsGB0Ywz8uTSGSK3QqTi8eIlYd_A9rQluuxOQForKHonex-3KYzDRQinsvebnz92mzziu5fnhBNjoBA_5PgztvW-Iw7xOOLghizkdCNOlbjdBBNdQJbpclPfn5HMb8fl_JcVxrLXR_I8Oi-4r1VlNnWN2R0BWo2RTLlrTwfcoZ0dFog4c8uktXEXbOqiMi76nQREZfk18pxZFodmEGUveaUYyt_tiinH7eDnEHS4hkfWAzdDmniIRtJUM",
+      "features": [
+        {
+          "icon": "task_alt",
+          "text": {
+            "vi": "Áp dụng cho mọi loại phòng.",
+            "en": "Valid for all room types."
+          }
+        },
+        {
+          "icon": "calendar_month",
+          "text": {
+            "vi": "Đặt trước 30 ngày.",
+            "en": "Book 30 days in advance."
+          }
+        }
+      ],
+      "expiryDays": 15,
+      "expiryHours": 8,
+      "expiryMinutes": 45,
+      "active": true,
+      "minNights": 1
+    },
+    {
+      "id": "SPARELAX",
+      "code": "SPARELAX",
+      "title": {
+        "vi": "Gói Nghỉ Dưỡng & Spa",
+        "en": "Relaxation & Spa Package"
+      },
+      "description": {
+        "vi": "Thư giãn tuyệt đối với gói nghỉ dưỡng tặng kèm liệu trình spa 60 phút cho 2 người.",
+        "en": "Complete relaxation with a stay package including 60-minute spa treatment for 2 people."
+      },
+      "discount": 0,
+      "discountType": "gift",
+      "badge": {
+        "text": {
+          "vi": "Tặng Kèm",
+          "en": "Free Gift"
+        },
+        "color": "blue"
+      },
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDgBsHPkPm8lIlHOsPxWiCMRg8WG0WwhxQj4VGvt7QEqQ7TWIh085B-cintwiLBc1TXqyGO0fTRtPHwnTRBzKHJdrRa0-c-v4UAmz0-1qK4bKEjE-q0C0A9EfQ5Cypydsl6W25BeBRScR-OVNCQMKVN-wcHZV_gpckmJv6avPNpChjqpeQptenNgrGpPWQaBa3CU2wzl54e359r1xLEI07goF9nEvRN5HN6jWrSJnkH3bxnJGKKSTPMYini5DTAx4Pyp9W6q9W1ds8",
+      "features": [
+        {
+          "icon": "hotel_class",
+          "text": {
+            "vi": "Áp dụng cho đặt phòng từ 2 đêm.",
+            "en": "Valid for bookings of 2+ nights."
+          }
+        },
+        {
+          "icon": "spa",
+          "text": {
+            "vi": "Bao gồm 1 liệu trình spa/khách.",
+            "en": "Includes 1 spa treatment/guest."
+          }
+        }
+      ],
+      "expiryDays": 28,
+      "expiryHours": 16,
+      "expiryMinutes": 30,
+      "active": true,
+      "minNights": 2
+    },
+    {
+      "id": "FAMILY50",
+      "code": "FAMILY50",
+      "title": {
+        "vi": "Ưu Đãi Gia Đình Vui Vẻ",
+        "en": "Happy Family Offer"
+      },
+      "description": {
+        "vi": "Giảm 50% cho phòng thứ hai và miễn phí bữa sáng cho trẻ em dưới 12 tuổi.",
+        "en": "50% off second room and free breakfast for children under 12."
+      },
+      "discount": 15,
+      "discountType": "percent",
+      "badge": {
+        "text": {
+          "vi": "Gia Đình",
+          "en": "Family"
+        },
+        "color": "sky"
+      },
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD7q-U18rA3d-gbcXiO7ClokM5ONFd7wm2r_S5Gmne6MN0eNrwoOxjckZDQ0AG1DuOwKVLLTIw9v3kK8Tksm1h3XhbyCqnzO6uz3cK24UDpwg8eLe7Rui7aoK0CZW9GUQrqX9BBbjmoIJxHBnygk6ThER2yuIH7FXLTtuYTv7CcyTrheFfYYZNBUMXuw6XFQ9k1l0ITKaUVSyW0CCKk1cEXLaavsKMHNBRqtt3rmqVJyKfLPUXsVXLAz62Y1nlDUnflNvRhmd5ZKSg",
+      "features": [
+        {
+          "icon": "child_friendly",
+          "text": {
+            "vi": "Miễn phí khu vui chơi.",
+            "en": "Free play area access."
+          }
+        },
+        {
+          "icon": "family_restroom",
+          "text": {
+            "vi": "Áp dụng cho gia đình có trẻ em.",
+            "en": "Valid for families with children."
+          }
+        }
+      ],
+      "expiryDays": 5,
+      "expiryHours": 22,
+      "expiryMinutes": 10,
+      "active": true,
+      "minNights": 2
+    },
+    {
+      "id": "FLASH30",
+      "code": "FLASH30",
+      "title": {
+        "vi": "Flash Sale Cuối Tuần",
+        "en": "Weekend Flash Sale"
+      },
+      "description": {
+        "vi": "Giảm giá sốc 30% cho tất cả các loại phòng khi đặt phòng vào cuối tuần này.",
+        "en": "Shocking 30% discount for all room types when booking this weekend."
+      },
+      "discount": 30,
+      "discountType": "percent",
+      "badge": {
+        "text": {
+          "vi": "Flash Sale",
+          "en": "Flash Sale"
+        },
+        "color": "rose"
+      },
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAnQkfF5OAA1kGgCyvT1PYmWyFZxAbztEyux8VGo8N5cSOZZpLMLAK6C2gLaxw6VQVAC5dtLqSYyBTHMr4p21fV5q9svgpTjWIxuVnTuCgYxX4CQfo3vleg9UGme4BQP73ZLRpsw4sNtrlBi0uHWLvChSQVmg6Z15w40efxJAa8bWOMjDmSSsvxK3EtW9OaAlRJFDDjRJPRfTG_bnplLcyWycizxVVVN2WKdCjtcxhh9kw1R-_ELK27vCKx-dharyTzWiGb3VyL1YM",
+      "features": [
+        {
+          "icon": "calendar_view_week",
+          "text": {
+            "vi": "Áp dụng cho thứ 7 & Chủ Nhật.",
+            "en": "Valid for Saturday & Sunday."
+          }
+        },
+        {
+          "icon": "bolt",
+          "text": {
+            "vi": "Số lượng có hạn.",
+            "en": "Limited quantity."
+          }
+        }
+      ],
+      "expiryDays": 0,
+      "expiryHours": 2,
+      "expiryMinutes": 15,
+      "active": true,
+      "minNights": 1
+    }
+  ]
+}

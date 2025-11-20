@@ -1,0 +1,60 @@
+{
+  "name": "vr360-phanthiet-demo",
+  "version": "1.0.0",
+  "description": "VR360 Du Lich Phan Thiet - Modern UI Demo",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "live-server --port=8000 --open=index.html",
+    "build": "npm run minify:css && npm run minify:js",
+    "minify:css": "cleancss -o css/style.min.css css/style.css",
+    "minify:js": "terser js/main.js -o js/main.min.js && terser js/config.js -o js/config.min.js && terser js/api-service.js -o js/api-service.min.js",
+    "watch:css": "watch 'npm run minify:css' css/",
+    "watch:js": "watch 'npm run minify:js' js/",
+    "serve": "http-server -p 8000 -o",
+    "deploy:netlify": "netlify deploy --prod",
+    "deploy:vercel": "vercel --prod",
+    "test": "echo 'No tests yet' && exit 0",
+    "lint:css": "stylelint 'css/**/*.css'",
+    "lint:js": "eslint 'js/**/*.js'",
+    "format": "prettier --write '**/*.{html,css,js,json,md}'",
+    "lighthouse": "lighthouse http://localhost:8000 --view",
+    "validate": "html-validate index.html"
+  },
+  "keywords": [
+    "vr360",
+    "virtual-tour",
+    "phan-thiet",
+    "vietnam-tourism",
+    "responsive-ui"
+  ],
+  "author": "VR360 Team",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.50.0",
+    "html-validate": "^8.5.0",
+    "http-server": "^14.1.1",
+    "lighthouse": "^11.1.0",
+    "live-server": "^1.2.2",
+    "netlify-cli": "^17.0.0",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.10.3",
+    "terser": "^5.20.0",
+    "vercel": "^32.4.1",
+    "watch": "^1.0.2"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vr360-phanthiet"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/vr360-phanthiet/issues"
+  },
+  "homepage": "https://dulichphanthiet.vt360.vn"
+}

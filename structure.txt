@@ -1,0 +1,21 @@
+├── .gitignore
+├── README.md
+├── assets/
+│   ├── icon/
+│   └── panoramas/
+├── css/
+│   ├── style.css
+│   └── toggle-btn.css
+├── data/
+│   ├── hotels.json
+│   └── tags.json
+├── index.html
+├── js/
+│   ├── api-service.js
+│   ├── config.js
+│   ├── hotel-app.js
+│   └── main.js
+├── package-lock.json
+├── package.json
+├── structure.txt
+└── tree_script.py

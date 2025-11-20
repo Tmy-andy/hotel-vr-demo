@@ -1,0 +1,294 @@
+{
+  "hotelInfo": {
+    "name": {
+      "vi": "Link Hotel Nha Trang",
+      "en": "Link Hotel Nha Trang"
+    },
+    "logo": "https://vtlink.link/wp-content/uploads/2025/06/Logo-Link-01-e1751259285169.png",
+    "description": {
+      "vi": "Khách sạn sang trọng 5 sao tại trung tâm Nha Trang, mang đến trải nghiệm nghỉ dưỡng đẳng cấp với view biển tuyệt đẹp và dịch vụ hoàn hảo.",
+      "en": "Luxury 5-star hotel in the heart of Nha Trang, offering world-class resort experience with stunning sea views and impeccable service."
+    },
+    "address": {
+      "vi": "123 Trần Phú, Nha Trang, Khánh Hòa",
+      "en": "123 Tran Phu, Nha Trang, Khanh Hoa"
+    },
+    "phone": "+84 258 123 4567",
+    "email": "info@marishotel.com",
+    "website": "https://marishotel.com",
+    "coordinates": { "lat": 12.2388, "lng": 109.1967 },
+    "checkIn": "14:00",
+    "checkOut": "12:00",
+    "defaultPanorama": "https://pannellum.org/images/alma.jpg"
+  },
+  
+  "rooms": [
+    {
+      "id": "room-001",
+      "name": {
+        "vi": "Phòng Deluxe",
+        "en": "Deluxe Room"
+      },
+      "description": {
+        "vi": "Phòng Deluxe rộng rãi 35m² với thiết kế hiện đại, view thành phố tuyệt đẹp. Đầy đủ tiện nghi cao cấp bao gồm giường King size, TV LED 55 inch, minibar, két an toàn.",
+        "en": "Spacious 35m² Deluxe Room with modern design and stunning city views. Fully equipped with King-size bed, 55-inch LED TV, minibar, and safety deposit box."
+      },
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+      "panoramaUrl": "https://pannellum.org/images/alma.jpg",
+      "price": 1500000,
+      "currency": "VND",
+      "capacity": 2,
+      "size": "35m²",
+      "bedType": {
+        "vi": "Giường King",
+        "en": "King Bed"
+      },
+      "view": {
+        "vi": "View Thành Phố",
+        "en": "City View"
+      },
+      "amenities": ["wifi", "tv", "ac", "minibar", "safe", "bathroom"],
+      "pitch": 0,
+      "yaw": 0,
+      "hfov": 100
+    },
+    {
+      "id": "room-002",
+      "name": {
+        "vi": "Phòng Deluxe View Biển",
+        "en": "Deluxe Sea View Room"
+      },
+      "description": {
+        "vi": "Phòng Deluxe 35m² với ban công riêng hướng biển, tận hưởng cảnh hoàng hôn tuyệt đẹp. Thiết kế sang trọng với đầy đủ tiện nghi hiện đại.",
+        "en": "35m² Deluxe Room with private balcony facing the sea, enjoy stunning sunset views. Luxurious design with full modern amenities."
+      },
+      "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+      "panoramaUrl": "https://pannellum.org/images/bma-0.jpg",
+      "price": 2000000,
+      "currency": "VND",
+      "capacity": 2,
+      "size": "35m²",
+      "bedType": {
+        "vi": "Giường King",
+        "en": "King Bed"
+      },
+      "view": {
+        "vi": "View Biển",
+        "en": "Sea View"
+      },
+      "amenities": ["wifi", "tv", "ac", "minibar", "safe", "bathroom", "balcony"],
+      "pitch": 0,
+      "yaw": 90,
+      "hfov": 100
+    },
+    {
+      "id": "room-003",
+      "name": {
+        "vi": "Suite",
+        "en": "Suite"
+      },
+      "description": {
+        "vi": "Suite 60m² với không gian sống rộng rãi, phòng ngủ và phòng khách riêng biệt. View biển panorama 180 độ, ban công lớn với ghế tắm nắng.",
+        "en": "60m² Suite with spacious living area, separate bedroom and living room. 180-degree panoramic sea view, large balcony with sun loungers."
+      },
+      "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
+      "panoramaUrl": "https://pannellum.org/images/jfk.jpg",
+      "price": 3500000,
+      "currency": "VND",
+      "capacity": 3,
+      "size": "60m²",
+      "bedType": {
+        "vi": "Giường King + Sofa Bed",
+        "en": "King Bed + Sofa Bed"
+      },
+      "view": {
+        "vi": "View Biển Panorama",
+        "en": "Panoramic Sea View"
+      },
+      "amenities": ["wifi", "tv", "ac", "minibar", "safe", "bathroom", "balcony", "living-room", "coffee-maker"],
+      "pitch": -5,
+      "yaw": 180,
+      "hfov": 110
+    },
+    {
+      "id": "room-004",
+      "name": {
+        "vi": "Apartment",
+        "en": "Apartment"
+      },
+      "description": {
+        "vi": "Apartment sang trọng 45m² với đầy đủ tiện nghi như ở nhà. Bếp nhỏ, phòng khách, ban công rộng. Phù hợp cho gia đình hoặc lưu trú dài ngày.",
+        "en": "Luxurious 45m² Apartment with full home amenities. Kitchenette, living room, spacious balcony. Perfect for families or extended stays."
+      },
+      "image": "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=800",
+      "panoramaUrl": "https://pannellum.org/images/from-tree.jpg",
+      "price": 2800000,
+      "currency": "VND",
+      "capacity": 4,
+      "size": "45m²",
+      "bedType": {
+        "vi": "2 Giường đôi",
+        "en": "2 Double Beds"
+      },
+      "view": {
+        "vi": "View Thành Phố",
+        "en": "City View"
+      },
+      "amenities": ["wifi", "tv", "ac", "minibar", "safe", "bathroom", "balcony", "kitchenette", "dining-area"],
+      "pitch": 5,
+      "yaw": 45,
+      "hfov": 100
+    },
+    {
+      "id": "room-005",
+      "name": {
+        "vi": "Presidential Suite",
+        "en": "Presidential Suite"
+      },
+      "description": {
+        "vi": "Presidential Suite đẳng cấp 120m² với 2 phòng ngủ, phòng khách rộng, bếp đầy đủ. View biển 360 độ từ tầng cao nhất. Dịch vụ butler riêng 24/7.",
+        "en": "Luxurious 120m² Presidential Suite with 2 bedrooms, spacious living room, full kitchen. 360-degree sea view from the top floor. 24/7 private butler service."
+      },
+      "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800",
+      "panoramaUrl": "https://pannellum.org/images/cerro-toco-0.jpg",
+      "price": 8000000,
+      "currency": "VND",
+      "capacity": 6,
+      "size": "120m²",
+      "bedType": {
+        "vi": "2 Giường King",
+        "en": "2 King Beds"
+      },
+      "view": {
+        "vi": "View Biển 360°",
+        "en": "360° Sea View"
+      },
+      "amenities": ["wifi", "tv", "ac", "minibar", "safe", "bathroom", "balcony", "kitchen", "living-room", "dining-room", "butler"],
+      "pitch": -10,
+      "yaw": 270,
+      "hfov": 120
+    }
+  ],
+
+  "amenities": {
+    "wifi": { "icon": "fa-wifi", "name": { "vi": "Wifi Miễn Phí", "en": "Free Wifi" } },
+    "tv": { "icon": "fa-tv", "name": { "vi": "TV LED", "en": "LED TV" } },
+    "ac": { "icon": "fa-snowflake", "name": { "vi": "Điều Hòa", "en": "Air Conditioning" } },
+    "minibar": { "icon": "fa-wine-glass", "name": { "vi": "Minibar", "en": "Minibar" } },
+    "safe": { "icon": "fa-lock", "name": { "vi": "Két Sắt", "en": "Safe Box" } },
+    "bathroom": { "icon": "fa-shower", "name": { "vi": "Phòng Tắm", "en": "Bathroom" } },
+    "balcony": { "icon": "fa-door-open", "name": { "vi": "Ban Công", "en": "Balcony" } },
+    "living-room": { "icon": "fa-couch", "name": { "vi": "Phòng Khách", "en": "Living Room" } },
+    "kitchenette": { "icon": "fa-kitchen-set", "name": { "vi": "Bếp Nhỏ", "en": "Kitchenette" } },
+    "kitchen": { "icon": "fa-kitchen-set", "name": { "vi": "Bếp Đầy Đủ", "en": "Full Kitchen" } },
+    "dining-area": { "icon": "fa-utensils", "name": { "vi": "Khu Ăn Uống", "en": "Dining Area" } },
+    "dining-room": { "icon": "fa-utensils", "name": { "vi": "Phòng Ăn", "en": "Dining Room" } },
+    "coffee-maker": { "icon": "fa-mug-hot", "name": { "vi": "Máy Pha Cà Phê", "en": "Coffee Maker" } },
+    "butler": { "icon": "fa-bell-concierge", "name": { "vi": "Dịch Vụ Butler", "en": "Butler Service" } }
+  },
+
+  "facilities": [
+    {
+      "id": "facility-001",
+      "icon": "fa-person-swimming",
+      "name": { "vi": "Hồ Bơi Vô Cực", "en": "Infinity Pool" },
+      "description": {
+        "vi": "Hồ bơi ngoài trời với view biển tuyệt đẹp, mở cửa từ 6:00 - 22:00",
+        "en": "Outdoor pool with stunning sea views, open from 6:00 AM - 10:00 PM"
+      }
+    },
+    {
+      "id": "facility-002",
+      "icon": "fa-spa",
+      "name": { "vi": "Spa & Massage", "en": "Spa & Massage" },
+      "description": {
+        "vi": "Dịch vụ spa cao cấp với các liệu pháp truyền thống và hiện đại",
+        "en": "Premium spa services with traditional and modern therapies"
+      }
+    },
+    {
+      "id": "facility-003",
+      "icon": "fa-dumbbell",
+      "name": { "vi": "Phòng Gym", "en": "Fitness Center" },
+      "description": {
+        "vi": "Phòng tập gym hiện đại với thiết bị cao cấp, mở cửa 24/7",
+        "en": "Modern fitness center with premium equipment, open 24/7"
+      }
+    },
+    {
+      "id": "facility-004",
+      "icon": "fa-utensils",
+      "name": { "vi": "Nhà Hàng", "en": "Restaurant" },
+      "description": {
+        "vi": "3 nhà hàng phục vụ ẩm thực Á - Âu và đặc sản địa phương",
+        "en": "3 restaurants serving Asian-European cuisine and local specialties"
+      }
+    },
+    {
+      "id": "facility-005",
+      "icon": "fa-martini-glass",
+      "name": { "vi": "Sky Bar", "en": "Sky Bar" },
+      "description": {
+        "vi": "Bar trên tầng thượng với view 360 độ và các loại cocktail đặc biệt",
+        "en": "Rooftop bar with 360-degree views and signature cocktails"
+      }
+    },
+    {
+      "id": "facility-006",
+      "icon": "fa-users-rectangle",
+      "name": { "vi": "Phòng Họp", "en": "Meeting Rooms" },
+      "description": {
+        "vi": "Phòng họp và hội nghị với thiết bị hiện đại, sức chứa đến 200 người",
+        "en": "Meeting and conference rooms with modern equipment, capacity up to 200 people"
+      }
+    }
+  ],
+
+  "policies": [
+    {
+      "id": "policy-001",
+      "icon": "fa-clock",
+      "title": { "vi": "Thời Gian Nhận/Trả Phòng", "en": "Check-in/Check-out Time" },
+      "content": {
+        "vi": "Nhận phòng: 14:00 | Trả phòng: 12:00. Nhận phòng sớm và trả phòng muộn tùy thuộc vào tình trạng phòng trống.",
+        "en": "Check-in: 2:00 PM | Check-out: 12:00 PM. Early check-in and late check-out subject to availability."
+      }
+    },
+    {
+      "id": "policy-002",
+      "icon": "fa-ban-smoking",
+      "title": { "vi": "Chính Sách Hút Thuốc", "en": "Smoking Policy" },
+      "content": {
+        "vi": "Toàn bộ khách sạn là khu vực không hút thuốc. Có khu vực hút thuốc riêng biệt tại các tầng được chỉ định.",
+        "en": "The entire hotel is a non-smoking area. Designated smoking areas available on specified floors."
+      }
+    },
+    {
+      "id": "policy-003",
+      "icon": "fa-dog",
+      "title": { "vi": "Chính Sách Thú Cưng", "en": "Pet Policy" },
+      "content": {
+        "vi": "Chúng tôi chào đón thú cưng dưới 10kg với phí bổ sung 500.000 VNĐ/đêm.",
+        "en": "We welcome pets under 10kg with an additional fee of 500,000 VND/night."
+      }
+    },
+    {
+      "id": "policy-004",
+      "icon": "fa-credit-card",
+      "title": { "vi": "Chính Sách Thanh Toán", "en": "Payment Policy" },
+      "content": {
+        "vi": "Chấp nhận thanh toán bằng tiền mặt và thẻ (Visa, Master, JCB). Đặt cọc 50% khi đặt phòng.",
+        "en": "Cash and card payments accepted (Visa, Master, JCB). 50% deposit required upon booking."
+      }
+    },
+    {
+      "id": "policy-005",
+      "icon": "fa-xmark",
+      "title": { "vi": "Chính Sách Hủy", "en": "Cancellation Policy" },
+      "content": {
+        "vi": "Hủy miễn phí trước 48 giờ. Hủy trong vòng 48 giờ sẽ tính phí 1 đêm. Không hoàn tiền nếu không đến (No-show).",
+        "en": "Free cancellation before 48 hours. Cancellation within 48 hours will be charged for 1 night. No refund for no-shows."
+      }
+    }
+  ]
+}

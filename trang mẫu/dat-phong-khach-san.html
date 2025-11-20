@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Thông tin đặt phòng</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-gray-800/60 font-display">
+    <div class="relative flex min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+        <div
+            class="relative w-full max-w-5xl rounded-xl bg-background-light dark:bg-background-dark shadow-2xl flex flex-col lg:flex-row">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <!-- Left Column: Form -->
+            <div
+                class="w-full lg:w-3/5 p-6 sm:p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col h-full">
+                    <h2 class="text-[#0d141b] dark:text-white tracking-light text-[28px] font-bold leading-tight pb-6">
+                        Thông tin đặt phòng</h2>
+                    <!-- Contact Info -->
+                    <div class="mb-8">
+                        <h3
+                            class="text-[#0d141b] dark:text-gray-100 text-lg font-bold leading-tight tracking-[-0.015em] pb-2">
+                            Thông tin liên hệ</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="flex flex-col flex-1">
+                                <p class="text-[#0d141b] dark:text-gray-300 text-base font-medium leading-normal pb-2">
+                                    Họ và tên</p>
+                                <input
+                                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#cfdbe7] dark:border-gray-600 bg-background-light dark:bg-background-dark h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal"
+                                    placeholder="Nhập họ và tên của bạn" value="" />
+                            </label>
+                            <label class="flex flex-col flex-1">
+                                <p class="text-[#0d141b] dark:text-gray-300 text-base font-medium leading-normal pb-2">
+                                    Số điện thoại</p>
+                                <input
+                                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141b] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#cfdbe7] dark:border-gray-600 bg-background-light dark:bg-background-dark h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal"
+                                    placeholder="Nhập số điện thoại" value="" />
+                            </label>
+                        </div>
+                        <div
+                            class="flex items-center gap-4 bg-transparent min-h-14 justify-between mt-4 border border-[#cfdbe7] dark:border-gray-600 rounded-lg px-4 py-2">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-[#0d141b] dark:text-gray-300">group</span>
+                                <p
+                                    class="text-[#0d141b] dark:text-gray-300 text-base font-normal leading-normal flex-1 truncate">
+                                    Số lượng khách</p>
+                            </div>
+                            <div class="shrink-0">
+                                <div class="flex items-center gap-2 text-[#0d141b] dark:text-white">
+                                    <button
+                                        class="text-lg font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full bg-[#e7edf3] dark:bg-gray-700 cursor-pointer hover:bg-primary/20 dark:hover:bg-primary/40">-</button>
+                                    <span
+                                        class="text-base font-medium leading-normal w-6 p-0 text-center bg-transparent">2</span>
+                                    <button
+                                        class="text-lg font-medium leading-normal flex h-7 w-7 items-center justify-center rounded-full bg-[#e7edf3] dark:bg-gray-700 cursor-pointer hover:bg-primary/20 dark:hover:bg-primary/40">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Stay Duration -->
+                    <div>
+                        <h3
+                            class="text-[#0d141b] dark:text-gray-100 text-lg font-bold leading-tight tracking-[-0.015em] pb-2">
+                            Thời gian lưu trú</h3>
+                        <div
+                            class="grid grid-cols-2 gap-4 text-center text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-900/50 p-1 rounded-lg">
+                            <div
+                                class="bg-white dark:bg-gray-700/50 text-primary dark:text-white rounded-md shadow p-2">
+                                Tháng 8</div>
+                            <div>Tháng 9</div>
+                        </div>
+                        <div class="grid grid-cols-7 gap-1 mt-4 text-center text-xs text-gray-400">
+                            <span>CN</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span>
+                        </div>
+                        <div class="grid grid-cols-7 gap-1 mt-2 text-sm text-center">
+                            <div class="text-gray-300 dark:text-gray-600">28</div>
+                            <div class="text-gray-300 dark:text-gray-600">29</div>
+                            <div class="text-gray-300 dark:text-gray-600">30</div>
+                            <div class="text-gray-300 dark:text-gray-600">31</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div class="bg-primary/20 text-primary rounded-l-full">6</div>
+                            <div class="bg-primary/20 text-primary">7</div>
+                            <div class="bg-primary/20 text-primary">8</div>
+                            <div class="bg-primary/20 text-primary">9</div>
+                            <div class="bg-primary/20 text-primary rounded-r-full">10</div>
+                            <div>11</div>
+                            <div>12</div>
+                            <div>13</div>
+                            <div>14</div>
+                            <div>15</div>
+                            <div>16</div>
+                            <div>17</div>
+                            <div>18</div>
+                            <div>19</div>
+                            <div>20</div>
+                            <div>21</div>
+                            <div>22</div>
+                            <div>23</div>
+                            <div>24</div>
+                            <div>25</div>
+                            <div>26</div>
+                            <div>27</div>
+                            <div>28</div>
+                            <div>29</div>
+                            <div>30</div>
+                            <div class="text-gray-300 dark:text-gray-600">1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Booking Summary -->
+            <div
+                class="w-full lg:w-2/5 p-6 sm:p-8 lg:p-10 bg-gray-50 dark:bg-gray-800/50 rounded-b-xl lg:rounded-r-xl lg:rounded-bl-none">
+                <div class="flex flex-col h-full">
+                    <h3 class="text-[#0d141b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] pb-4">
+                        Tóm tắt đặt phòng</h3>
+                    <div class="mb-4">
+                        <p class="text-base font-semibold text-gray-800 dark:text-gray-100">Khách sạn The Reverie Saigon
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Phòng Deluxe King</p>
+                    </div>
+                    <div class="space-y-3 py-4 border-y border-gray-200 dark:border-gray-700">
+                        <div class="flex justify-between text-gray-600 dark:text-gray-300">
+                            <span>Giá phòng x 4 đêm</span>
+                            <span>14.000.000đ</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600 dark:text-gray-300">
+                            <span>Phí dịch vụ</span>
+                            <span>100.000đ</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between font-bold text-lg py-4 text-[#0d141b] dark:text-white">
+                        <span>Tổng cộng</span>
+                        <span>14.100.000đ</span>
+                    </div>
+                    <div class="mt-auto">
+                        <h3
+                            class="text-[#0d141b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] pb-4">
+                            Phương thức thanh toán</h3>
+                        <div class="space-y-3">
+                            <label
+                                class="flex items-center gap-4 p-4 border border-primary dark:border-primary bg-primary/10 rounded-lg cursor-pointer">
+                                <input checked="" class="form-radio text-primary focus:ring-primary" name="payment"
+                                    type="radio" />
+                                <span class="material-symbols-outlined text-primary">local_atm</span>
+                                <span class="font-medium text-gray-800 dark:text-gray-200">Thanh toán khi nhận
+                                    phòng</span>
+                            </label>
+                            <label
+                                class="flex items-center gap-4 p-4 border border-gray-300 dark:border-gray-600 hover:border-primary/50 rounded-lg cursor-pointer">
+                                <input class="form-radio text-primary focus:ring-primary" name="payment" type="radio" />
+                                <img class="h-6" data-alt="VNPay logo"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4gjbAqR0JnLl8mAtJW8vNf8jqE2AsamE_ONIXxa4ohMZGidv67UmTRVn8gmy-bsBGpP9vyNcqmMIp8PjDtrv9zkfP_hYLk2arhM2Wdc5ReMMl1HJ9D3fKr8c8GSkNQcoVp92utnwggFoHxxL4my8ZWWVjzEChx_1K8BVhC6prm9NclQ_FcUzsXNvSpMLCI-5NbHxVmReO9_yJzlO9yFKSbug09rY9r33s_1XqLj9X9jUpLlyx96OPXMaP3Ui3s16-loSNOl5ONns" />
+                                <span class="font-medium text-gray-800 dark:text-gray-200">Thanh toán online qua
+                                    VNPay</span>
+                            </label>
+                        </div>
+                        <button
+                            class="w-full mt-6 bg-primary text-white font-bold py-4 rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-background-dark">
+                            Hoàn tất đặt phòng
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

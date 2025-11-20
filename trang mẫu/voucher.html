@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hotel Vouchers &amp; Promotions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#137fec", // A modern blue color
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1E293B",
+                        "danger": "#EF4444"
+                    },
+                    fontFamily: {
+                        display: ["Montserrat", "sans-serif"],
+                        mono: ["Roboto Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem", // 12px
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 300,
+                'GRAD' 0,
+                'opsz' 24;
+            font-size: inherit;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-700 dark:text-slate-300 antialiased">
+    <div class="relative min-h-screen">
+        <header
+            class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    <div class="flex items-center space-x-3">
+                        <span class="material-symbols-outlined text-3xl text-primary">villa</span>
+                        <a class="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100" href="#">Link
+                            Hotel</a>
+                    </div>
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Trang chủ</a>
+                        <a class="text-sm font-medium hover:text-primary transition-colors text-primary"
+                            href="#vouchers">Ưu đãi</a>
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Tiện ích</a>
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Liên hệ</a>
+                    </nav>
+                    <div class="flex items-center space-x-4">
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                            <span class="material-symbols-outlined text-xl">dark_mode</span>
+                        </button>
+                        <a class="px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                            href="#">Đặt phòng</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+            <section class="text-center">
+                <h1
+                    class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-slate-50 mb-4">
+                    Ưu Đãi Đặc Biệt &amp; Voucher</h1>
+                <p class="max-w-3xl mx-auto text-lg text-slate-600 dark:text-slate-400">
+                    Khám phá các chương trình khuyến mãi độc quyền và voucher hấp dẫn để tận hưởng kỳ nghỉ của bạn tại
+                    Link Hotel với chi phí tốt nhất.
+                </p>
+            </section>
+            <section class="mt-16 sm:mt-20" id="vouchers">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row">
+                            <div class="sm:w-2/5 h-48 sm:h-auto relative">
+                                <img alt="Couple dining by candlelight at a hotel" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7jR-XzTswM2WjItg0dlGsGB0Ywz8uTSGSK3QqTi8eIlYd_A9rQluuxOQForKHonex-3KYzDRQinsvebnz92mzziu5fnhBNjoBA_5PgztvW-Iw7xOOLghizkdCNOlbjdBBNdQJbpclPfn5HMb8fl_JcVxrLXR_I8Oi-4r1VlNnWN2R0BWo2RTLlrTwfcoZ0dFog4c8uktXEXbOqiMi76nQREZfk18pxZFodmEGUveaUYyt_tiinH7eDnEHS4hkfWAzdDmniIRtJUM" />
+                                <div
+                                    class="absolute top-4 left-4 bg-primary/90 text-white text-xs font-bold uppercase px-3 py-1.5 rounded-full backdrop-blur-sm">
+                                    Giảm 20%</div>
+                            </div>
+                            <div class="sm:w-3/5 p-6 flex flex-col">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-2">Ưu Đãi Đặt Phòng
+                                    Sớm</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">Lên kế hoạch trước
+                                    và tiết kiệm. Giảm ngay 20% giá phòng khi đặt trước 30 ngày.</p>
+                                <div class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-6">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="material-symbols-outlined text-base text-primary mr-3">task_alt</span>
+                                        <span>Áp dụng cho mọi loại phòng.</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="material-symbols-outlined text-base text-primary mr-3">calendar_month</span>
+                                        <span>Đặt trước 30 ngày.</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg text-center mb-6">
+                                    <p
+                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                                        Kết thúc trong</p>
+                                    <div
+                                        class="flex justify-center items-center space-x-3 font-mono text-2xl font-bold text-danger">
+                                        <div><span class="countdown-days">15</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Ngày</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-hours">08</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Giờ</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-minutes">45</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Phút</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-surface-dark">Đặt
+                                    ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row">
+                            <div class="sm:w-2/5 h-48 sm:h-auto relative">
+                                <img alt="Woman relaxing at a hotel spa" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgBsHPkPm8lIlHOsPxWiCMRg8WG0WwhxQj4VGvt7QEqQ7TWIh085B-cintwiLBc1TXqyGO0fTRtPHwnTRBzKHJdrRa0-c-v4UAmz0-1qK4bKEjE-q0C0A9EfQ5Cypydsl6W25BeBRScR-OVNCQMKVN-wcHZV_gpckmJv6avPNpChjqpeQptenNgrGpPWQaBa3CU2wzl54e359r1xLEI07goF9nEvRN5HN6jWrSJnkH3bxnJGKKSTPMYini5DTAx4Pyp9W6q9W1ds8" />
+                                <div
+                                    class="absolute top-4 left-4 bg-blue-500/90 text-white text-xs font-bold uppercase px-3 py-1.5 rounded-full backdrop-blur-sm">
+                                    Tặng Kèm</div>
+                            </div>
+                            <div class="sm:w-3/5 p-6 flex flex-col">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-2">Gói Nghỉ Dưỡng
+                                    &amp; Spa</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">Thư giãn tuyệt đối
+                                    với gói nghỉ dưỡng tặng kèm liệu trình spa 60 phút cho 2 người.</p>
+                                <div class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-6">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="material-symbols-outlined text-base text-primary mr-3">hotel_class</span>
+                                        <span>Áp dụng cho đặt phòng từ 2 đêm.</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="material-symbols-outlined text-base text-primary mr-3">spa</span>
+                                        <span>Bao gồm 1 liệu trình spa/khách.</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg text-center mb-6">
+                                    <p
+                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                                        Kết thúc trong</p>
+                                    <div
+                                        class="flex justify-center items-center space-x-3 font-mono text-2xl font-bold text-slate-700 dark:text-slate-200">
+                                        <div><span class="countdown-days">28</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Ngày</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-hours">16</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Giờ</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-minutes">30</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Phút</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    class="w-full bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 font-semibold py-3 rounded-lg hover:bg-slate-700 dark:hover:bg-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-800 dark:focus:ring-offset-surface-dark dark:focus:ring-slate-200">Lấy
+                                    Voucher</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row">
+                            <div class="sm:w-2/5 h-48 sm:h-auto relative">
+                                <img alt="Family having fun at the hotel swimming pool"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7q-U18rA3d-gbcXiO7ClokM5ONFd7wm2r_S5Gmne6MN0eNrwoOxjckZDQ0AG1DuOwKVLLTIw9v3kK8Tksm1h3XhbyCqnzO6uz3cK24UDpwg8eLe7Rui7aoK0CZW9GUQrqX9BBbjmoIJxHBnygk6ThER2yuIH7FXLTtuYTv7CcyTrheFfYYZNBUMXuw6XFQ9k1l0ITKaUVSyW0CCKk1cEXLaavsKMHNBRqtt3rmqVJyKfLPUXsVXLAz62Y1nlDUnflNvRhmd5ZKSg" />
+                                <div
+                                    class="absolute top-4 left-4 bg-sky-500/90 text-white text-xs font-bold uppercase px-3 py-1.5 rounded-full backdrop-blur-sm">
+                                    Gia Đình</div>
+                            </div>
+                            <div class="sm:w-3/5 p-6 flex flex-col">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-2">Ưu Đãi Gia Đình Vui
+                                    Vẻ</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">Giảm 50% cho phòng
+                                    thứ hai và miễn phí bữa sáng cho trẻ em dưới 12 tuổi.</p>
+                                <div class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-6">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="material-symbols-outlined text-base text-primary mr-3">child_friendly</span>
+                                        <span>Miễn phí khu vui chơi.</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="material-symbols-outlined text-base text-primary mr-3">family_restroom</span>
+                                        <span>Áp dụng cho gia đình có trẻ em.</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg text-center mb-6">
+                                    <p
+                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                                        Kết thúc trong</p>
+                                    <div
+                                        class="flex justify-center items-center space-x-3 font-mono text-2xl font-bold text-slate-700 dark:text-slate-200">
+                                        <div><span class="countdown-days">05</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Ngày</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-hours">22</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Giờ</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-minutes">10</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Phút</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-surface-dark">Đặt
+                                    ngay</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row">
+                            <div class="sm:w-2/5 h-48 sm:h-auto relative">
+                                <img alt="Delicious hotel breakfast spread" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnQkfF5OAA1kGgCyvT1PYmWyFZxAbztEyux8VGo8N5cSOZZpLMLAK6C2gLaxw6VQVAC5dtLqSYyBTHMr4p21fV5q9svgpTjWIxuVnTuCgYxX4CQfo3vleg9UGme4BQP73ZLRpsw4sNtrlBi0uHWLvChSQVmg6Z15w40efxJAa8bWOMjDmSSsvxK3EtW9OaAlRJFDDjRJPRfTG_bnplLcyWycizxVVVN2WKdCjtcxhh9kw1R-_ELK27vCKx-dharyTzWiGb3VyL1YM" />
+                                <div
+                                    class="absolute top-4 left-4 bg-rose-500/90 text-white text-xs font-bold uppercase px-3 py-1.5 rounded-full backdrop-blur-sm">
+                                    Flash Sale</div>
+                            </div>
+                            <div class="sm:w-3/5 p-6 flex flex-col">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-2">Flash Sale Cuối
+                                    Tuần</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">Giảm giá sốc 30%
+                                    cho tất cả các loại phòng khi đặt phòng vào cuối tuần này.</p>
+                                <div class="space-y-3 text-sm text-slate-500 dark:text-slate-400 mb-6">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="material-symbols-outlined text-base text-primary mr-3">calendar_view_week</span>
+                                        <span>Áp dụng cho thứ 7 &amp; Chủ Nhật.</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="material-symbols-outlined text-base text-primary mr-3">bolt</span>
+                                        <span>Số lượng có hạn.</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg text-center mb-6">
+                                    <p
+                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                                        Kết thúc trong</p>
+                                    <div
+                                        class="flex justify-center items-center space-x-3 font-mono text-2xl font-bold text-danger">
+                                        <div><span class="countdown-days">00</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Ngày</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-hours">02</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Giờ</span>
+                                        </div>
+                                        <div class="text-slate-300 dark:text-slate-600">:</div>
+                                        <div><span class="countdown-minutes">15</span><span
+                                                class="text-xs block font-display font-medium text-slate-500 dark:text-slate-400">Phút</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button
+                                    class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-surface-dark">Săn
+                                    Sale</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-slate-100 dark:bg-surface-dark mt-24 border-t border-slate-200 dark:border-slate-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+                    <p class="text-sm text-slate-500 dark:text-slate-400">© 2024 Link Hotel. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors"
+                            href="#">Facebook</a>
+                        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors"
+                            href="#">Instagram</a>
+                        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors"
+                            href="#">TripAdvisor</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

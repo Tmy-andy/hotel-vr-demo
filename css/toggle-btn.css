@@ -1,0 +1,133 @@
+/* ===== TOGGLE BUTTON CSS ===== */
+/* File này chứa CSS cho chức năng Toggle Hide/Show UI */
+
+/* ===== FULLSCREEN SUPPORT ===== */
+/* Đảm bảo action buttons luôn hiển thị trong fullscreen */
+:fullscreen .action-buttons,
+:-webkit-full-screen .action-buttons,
+:-moz-full-screen .action-buttons,
+:-ms-fullscreen .action-buttons {
+    z-index: 2147483647 !important;
+    display: flex !important;
+}
+
+/* Đảm bảo sidebar luôn hiển thị trong fullscreen */
+:fullscreen .sidebar,
+:-webkit-full-screen .sidebar,
+:-moz-full-screen .sidebar,
+:-ms-fullscreen .sidebar {
+    display: flex !important;
+}
+
+/* Đảm bảo language toggle luôn hiển thị trong fullscreen */
+:fullscreen .language-toggle,
+:-webkit-full-screen .language-toggle,
+:-moz-full-screen .language-toggle,
+:-ms-fullscreen .language-toggle {
+    display: flex !important;
+}
+
+/* ===== UI HIDDEN STATE ===== */
+/* CSS cho chức năng ẩn/hiện toàn bộ UI */
+/* Logic: Khi body có class 'ui-hidden', ẩn mọi thứ trừ logo và nút toggle */
+
+/* Ẩn sidebar navigation */
+body.ui-hidden .sidebar-nav {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Ẩn language toggle */
+body.ui-hidden .language-toggle {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Ẩn tất cả action buttons TRỪ nút toggle */
+body.ui-hidden .action-buttons .action-btn:not(.toggle-buttons-btn) {
+    opacity: 0;
+    transform: translateX(80px);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cascade animation delays khi ẩn */
+body.ui-hidden .action-btn:nth-child(1) { transition-delay: 0.05s; }
+body.ui-hidden .action-btn:nth-child(2) { transition-delay: 0.1s; }
+body.ui-hidden .action-btn:nth-child(3) { transition-delay: 0.15s; }
+body.ui-hidden .action-btn:nth-child(4) { transition-delay: 0.2s; }
+body.ui-hidden .action-btn:nth-child(5) { transition-delay: 0.25s; }
+body.ui-hidden .action-btn:nth-child(6) { transition-delay: 0.3s; }
+
+/* Giữ nút toggle luôn hiển thị và có thể tương tác */
+body.ui-hidden .toggle-buttons-btn {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: all !important;
+}
+
+/* Toggle button styling - đảm bảo nó nổi bật */
+.toggle-buttons-btn {
+    background: rgba(33, 150, 243, 0.95) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.toggle-buttons-btn:hover {
+    background: var(--primary-color) !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5) !important;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    /* Điều chỉnh khoảng cách di chuyển cho tablet */
+    body.ui-hidden .action-buttons .action-btn:not(.toggle-buttons-btn) {
+        transform: translateX(60px);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Điều chỉnh khoảng cách di chuyển cho mobile */
+    body.ui-hidden .action-buttons .action-btn:not(.toggle-buttons-btn) {
+        transform: translateX(55px);
+    }
+}
+
+/* ===== FULLSCREEN ICON TOGGLE ===== */
+/* CSS cho việc đổi icon giữa expand và compress */
+
+.fullscreen-expand-icon,
+.fullscreen-compress-icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+/* Icon animation khi hover */
+#fullscreenBtn:hover .fullscreen-expand-icon,
+#fullscreenBtn:hover .fullscreen-compress-icon {
+    transform: scale(1.1);
+}
+
+/* ===== ADDITIONAL UTILITIES ===== */
+
+/* Smooth transitions cho mọi element */
+.sidebar-nav,
+.language-toggle,
+.action-btn {
+    will-change: opacity, transform;
+}
+
+/* Prevent flash of content */
+body.ui-hidden .sidebar-nav * {
+    visibility: hidden;
+}
+
+body.ui-hidden .language-toggle * {
+    visibility: hidden;
+}
