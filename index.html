@@ -13,9 +13,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom CSS - REFACTORED (Modular Structure) -->
+    <link rel="stylesheet" href="css/style-new.css">
     <link rel="stylesheet" href="css/toggle-btn.css">
+    
+    <!-- OLD MONOLITHIC CSS (Backup - có thể xóa sau khi test OK) -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
 
 <body>
@@ -630,8 +633,11 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- JavaScript - ES6 Modules (REFACTORED) -->
+    <script type="module" src="js/main-new.js"></script>
+    
+    <!-- OLD MONOLITHIC SCRIPT (Backup - có thể xóa sau khi test OK) -->
+    <!-- <script src="js/main.js"></script> -->
 </body>
 
 </html>
