@@ -3326,9 +3326,9 @@ body.ui-hidden .toggle-buttons-btn {
         padding: 15px;
     }
 
-    .panel-content {
+    /* .panel-content {
         padding: 15px;
-    }
+    } */
 
     .content-grid {
         grid-template-columns: 1fr;
