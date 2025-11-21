@@ -685,6 +685,13 @@ function handleRoomClick(roomId) {
     
     console.log('🏨 Room clicked:', room.name.vi);
     
+    // Show VR title overlay
+    const lang = state.currentLanguage;
+    const roomName = room.name && typeof room.name === 'object' 
+        ? room.name[lang] || room.name.vi 
+        : room.name || '-';
+    showVRTitleOverlay(roomName);
+    
     // 1. Load VR panorama FIRST
     if (room.panoramaUrl) {
         loadVRPanorama(room);
@@ -1514,6 +1521,25 @@ function handleSearch(e) {
     }
 }
 
+// ===== Show VR Title Overlay =====
+function showVRTitleOverlay(title) {
+    const overlay = document.getElementById('vrTitleOverlay');
+    const titleText = document.getElementById('vrTitleText');
+    
+    if (overlay && titleText) {
+        titleText.textContent = title;
+        overlay.style.display = 'flex';
+    }
+}
+
+// ===== Hide VR Title Overlay =====
+function hideVRTitleOverlay() {
+    const overlay = document.getElementById('vrTitleOverlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+}
+
 // ===== Clear Search =====
 function clearSearch() {
     if (elements.searchInput) {
@@ -1717,6 +1743,7 @@ function openContentPanel() {
 
 function closeContentPanel() {
     elements.contentPanel.classList.remove('active');
+    hideVRTitleOverlay();
     console.log('✓ Content panel closed');
 }
 
@@ -1800,6 +1827,12 @@ function toggleUI() {
     if (icon) {
         icon.className = document.body.classList.contains('ui-hidden') ? 
             'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
+    }
+    
+    // Hide room info panel when toggling UI
+    if (elements.roomInfoPanel) {
+        elements.roomInfoPanel.classList.remove('active');
+        elements.roomInfoPanel.classList.remove('collapsed');
     }
 }
 
@@ -1964,6 +1997,13 @@ function handleRestaurantClick(restaurantId) {
     state.selectedRoom = restaurant; // Reuse selectedRoom state for restaurant
     
     console.log('🍽️ Restaurant clicked:', restaurant.name.vi);
+    
+    // Show VR title overlay
+    const lang = state.currentLanguage;
+    const restaurantName = restaurant.name && typeof restaurant.name === 'object' 
+        ? restaurant.name[lang] || restaurant.name.vi 
+        : restaurant.name || '-';
+    showVRTitleOverlay(restaurantName);
     
     // 1. Load VR panorama FIRST
     if (restaurant.panoramaUrl) {

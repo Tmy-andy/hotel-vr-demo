@@ -93,10 +93,6 @@ body {
     display: none !important;
 }
 
-.pnlm-zoom-controls {
-    display: none !important;
-}
-
 .pnlm-controls-container {
     right: 10px !important;
     bottom: 0 !important;
@@ -123,6 +119,71 @@ body {
 
 .pnlm-container {
     z-index: 0 !important;
+}
+
+/* ===== VR TITLE OVERLAY ===== */
+.vr-title-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    pointer-events: none;
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 0, 0.4) 0%, 
+        rgba(0, 0, 0, 0.2) 50%, 
+        transparent 100%);
+    padding: 20px 0;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.vr-title-content {
+    text-align: center;
+    max-width: 90%;
+}
+
+#vrTitleText {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#vrTitleText::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #2196F3;
+    border-radius: 50%;
+}
+
+#vrTitleText::after {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #2196F3;
+    border-radius: 50%;
 }
 
 /* ===== SIDEBAR (STYLE GỐC - TRONG SUỐT) ===== */
@@ -4579,4 +4640,99 @@ body.ui-hidden .toggle-buttons-btn {
     line-height: 1.75;
     max-width: 600px;
     margin: 0 auto;
+}
+
+@media (max-height: 700px) and (orientation: landscape) {
+    /* Landscape mode - 2 column grid */
+    .sidebar-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .nav-item {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
+    /* Mobile landscape - 2 column */
+    .sidebar-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        max-width: 100%;
+    }
+    
+    .nav-item {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 12px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 8px;
+    }
+    
+    .logo {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    /* Tablet landscape */
+    .sidebar-nav {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .nav-item {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/* ===== MOBILE PORTRAIT - KEEP SIDEBAR ===== */
+@media (max-width: 600px) and (orientation: portrait) {
+    /* Mobile portrait - always keep sidebar visible */
+    .content-panel {
+        width: calc(100% - 70px);
+        left: 70px;
+    }
+}
+
+/* ===== LANDSCAPE CONTENT PANEL ===== */
+@media (max-height: 600px) and (orientation: landscape) {
+    /* ONLY Mobile landscape - full screen */
+    .content-panel {
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100vh;
+    }
+    
+    .content-panel.active {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+    }
 }
