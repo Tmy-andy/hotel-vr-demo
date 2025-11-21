@@ -75,6 +75,9 @@ function attachRestaurantCardListeners() {
     const cards = document.querySelectorAll('.content-card[data-restaurant-id]');
     cards.forEach(card => {
         card.addEventListener('click', (e) => {
+            // Prevent card click if clicking on book button
+            if (e.target.closest('.btn-book-room')) return;
+            
             const restaurantId = e.currentTarget.dataset.restaurantId;
             handleRestaurantClick(restaurantId);
         });

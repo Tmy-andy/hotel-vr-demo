@@ -5,7 +5,7 @@ import { state } from './state.js';
 import { initVRViewer } from './vr-viewer.js';
 import { setupEventListeners, loadPage } from './navigation.js';
 import { showLoading, showError } from './utils.js';
-import { initNewBookingModal } from './booking.js';
+import { initBookingCart } from './booking-cart.js';
 
 // ===== Load Hotel Data =====
 async function loadHotelData() {
@@ -43,8 +43,8 @@ async function initializeApp() {
         // Setup event listeners first
         setupEventListeners();
         
-        // Initialize new booking modal
-        initNewBookingModal();
+        // Initialize booking cart system
+        initBookingCart();
         
         // Then load hotel data
         try {

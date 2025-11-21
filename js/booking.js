@@ -119,17 +119,40 @@ export function initNewBookingModal() {
     if (closeSuccessBtn) {
         closeSuccessBtn.addEventListener('click', () => {
             const successModal = document.getElementById('bookingSuccessModal');
-            successModal.style.display = 'none';
+            if (successModal) successModal.style.display = 'none';
         });
     }
     
     if (backToHomeBtn) {
         backToHomeBtn.addEventListener('click', () => {
             const successModal = document.getElementById('bookingSuccessModal');
-            successModal.style.display = 'none';
+            if (successModal) successModal.style.display = 'none';
             import('./utils.js').then(({ closeContentPanel }) => {
                 closeContentPanel();
             });
+        });
+    }
+    
+    // Click outside to close modals
+    const qrPaymentModal = document.getElementById('qrPaymentModal');
+    const successModal = document.getElementById('bookingSuccessModal');
+    
+    [newBookingModal, qrPaymentModal, successModal].forEach(modal => {
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    });
+    
+    // Download voucher button
+    const downloadVoucherBtn = document.querySelector('.success-action-btn.primary');
+    if (downloadVoucherBtn) {
+        downloadVoucherBtn.addEventListener('click', () => {
+            alert('Tính năng tải xuống phiếu đang được phát triển!');
+            // In production: Implement PDF generation or print
         });
     }
     
@@ -386,8 +409,11 @@ export function openNewBookingModal(room) {
         ? room.name[lang] || room.name.vi 
         : room.name || room.title || '-';
     
-    document.getElementById('summaryRoomName').textContent = roomName;
-    document.getElementById('summaryRoomType').textContent = roomName;
+    // These elements only exist in old modal, add safe checks
+    const summaryRoomName = document.getElementById('summaryRoomName');
+    const summaryRoomType = document.getElementById('summaryRoomType');
+    if (summaryRoomName) summaryRoomName.textContent = roomName;
+    if (summaryRoomType) summaryRoomType.textContent = roomName;
     
     // Reset form
     newBookingState.guestCount = 2;
@@ -398,10 +424,15 @@ export function openNewBookingModal(room) {
     newBookingState.voucherCode = null;
     newBookingState.discount = 0;
     
-    document.getElementById('guestCount').textContent = '2';
-    document.getElementById('newFullName').value = '';
-    document.getElementById('newPhone').value = '';
-    document.getElementById('voucherInput').value = '';
+    const guestCount = document.getElementById('guestCount');
+    const newFullName = document.getElementById('newFullName');
+    const newPhone = document.getElementById('newPhone');
+    const voucherInput = document.getElementById('voucherInput');
+    
+    if (guestCount) guestCount.textContent = '2';
+    if (newFullName) newFullName.value = '';
+    if (newPhone) newPhone.value = '';
+    if (voucherInput) voucherInput.value = '';
     
     const voucherMessage = document.getElementById('voucherMessage');
     if (voucherMessage) {
@@ -409,8 +440,13 @@ export function openNewBookingModal(room) {
         voucherMessage.className = 'voucher-message';
     }
     
-    document.querySelectorAll('.new-payment-option')[0].classList.add('active');
-    document.querySelector('input[name="paymentMethod"][value="cash"]').checked = true;
+    const paymentOptions = document.querySelectorAll('.new-payment-option');
+    if (paymentOptions.length > 0) {
+        paymentOptions[0].classList.add('active');
+    }
+    
+    const cashPayment = document.querySelector('input[name="paymentMethod"][value="cash"]');
+    if (cashPayment) cashPayment.checked = true;
     
     updatePriceSummary();
     generateCalendar();
@@ -473,16 +509,21 @@ function showQRPaymentModal(bookingData) {
     if (!qrModal) return;
     
     document.getElementById('qrAmount').textContent = formatCurrency(bookingData.total);
-    document.getElementById('qrOrderCode').textContent = generateOrderCode();
+    const orderCode = generateOrderCode();
+    document.getElementById('qrOrderCode').textContent = orderCode;
     
     qrModal.style.display = 'flex';
     
     let minutes = 14;
     let seconds = 59;
+    let autoRedirectTimer = null;
     
     const timerInterval = setInterval(() => {
-        document.getElementById('qrMinutes').textContent = minutes;
-        document.getElementById('qrSeconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+        const minutesEl = document.getElementById('qrMinutes');
+        const secondsEl = document.getElementById('qrSeconds');
+        
+        if (minutesEl) minutesEl.textContent = minutes;
+        if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
         
         seconds--;
         if (seconds < 0) {
@@ -492,23 +533,33 @@ function showQRPaymentModal(bookingData) {
         
         if (minutes < 0) {
             clearInterval(timerInterval);
-        }
-    }, 1000);
-    
-    let countdown = 3;
-    document.getElementById('qrRedirectSeconds').textContent = countdown;
-    
-    const redirectInterval = setInterval(() => {
-        countdown--;
-        document.getElementById('qrRedirectSeconds').textContent = countdown;
-        
-        if (countdown <= 0) {
-            clearInterval(redirectInterval);
-            clearInterval(timerInterval);
+            if (autoRedirectTimer) clearTimeout(autoRedirectTimer);
+            // Expired - close modal
             qrModal.style.display = 'none';
-            showBookingSuccessModal(bookingData);
+            alert('Mã QR đã hết hạn. Vui lòng thử lại.');
         }
     }, 1000);
+    
+    // Auto-redirect after 8 seconds to simulate successful payment
+    autoRedirectTimer = setTimeout(() => {
+        clearInterval(timerInterval);
+        qrModal.style.display = 'none';
+        showBookingSuccessModal(bookingData);
+    }, 8000); // 8 seconds
+    
+    // Handle confirm button (user can also manually confirm)
+    const confirmBtn = document.getElementById('qrConfirmPayment');
+    const handleConfirm = () => {
+        clearInterval(timerInterval);
+        if (autoRedirectTimer) clearTimeout(autoRedirectTimer);
+        qrModal.style.display = 'none';
+        showBookingSuccessModal(bookingData);
+        confirmBtn.removeEventListener('click', handleConfirm);
+    };
+    
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', handleConfirm);
+    }
 }
 
 // Show booking success modal
@@ -525,25 +576,100 @@ function showBookingSuccessModal(bookingData) {
         });
     };
     
-    const room = bookingData.room;
     const lang = state.currentLanguage;
     
-    document.getElementById('voucherHotelImg').src = room.image || room.panorama || '';
-    document.getElementById('voucherHotelName').textContent = 'Link Hotel Nha Trang';
-    document.getElementById('voucherLocation').textContent = '123 Trần Phú, Nha Trang, Khánh Hòa';
+    // Handle both single room and cart system (multiple rooms)
+    let room, roomName, totalRooms;
     
-    document.getElementById('voucherCheckin').textContent = formatDate(bookingData.checkIn);
-    document.getElementById('voucherCheckout').textContent = formatDate(bookingData.checkOut);
-    document.getElementById('voucherNights').textContent = `${bookingData.nights} đêm`;
-    document.getElementById('voucherGuests').textContent = `${bookingData.guests} người`;
+    if (bookingData.items && Array.isArray(bookingData.items)) {
+        // Cart system - multiple rooms
+        room = bookingData.items[0].room; // Use first room for image
+        totalRooms = bookingData.items.reduce((sum, item) => sum + item.quantity, 0);
+        
+        // Create room list string
+        const roomList = bookingData.items.map(item => {
+            const name = item.room.name && typeof item.room.name === 'object' 
+                ? item.room.name[lang] || item.room.name.vi 
+                : item.room.name || '-';
+            return `${item.quantity}x ${name}`;
+        }).join(', ');
+        
+        roomName = roomList;
+    } else {
+        // Single room booking
+        room = bookingData.room;
+        totalRooms = 1;
+        roomName = room.name && typeof room.name === 'object' 
+            ? room.name[lang] || room.name.vi 
+            : room.name || room.title || '-';
+    }
     
-    const roomName = room.name && typeof room.name === 'object' 
-        ? room.name[lang] || room.name.vi 
-        : room.name || room.title || '-';
-    document.getElementById('voucherRoomType').textContent = roomName;
+    const voucherHotelImg = document.getElementById('voucherHotelImg');
+    const voucherHotelName = document.getElementById('voucherHotelName');
+    const voucherLocation = document.getElementById('voucherLocation');
+    const voucherCheckin = document.getElementById('voucherCheckin');
+    const voucherCheckout = document.getElementById('voucherCheckout');
+    const voucherNights = document.getElementById('voucherNights');
+    const voucherGuests = document.getElementById('voucherGuests');
+    const voucherRoomType = document.getElementById('voucherRoomType');
     
-    document.getElementById('voucherTotal').textContent = formatCurrency(bookingData.total);
-    document.getElementById('voucherBookingCode').textContent = generateOrderCode();
+    if (voucherHotelImg) voucherHotelImg.src = room.image || room.panorama || '';
+    if (voucherHotelName) voucherHotelName.textContent = 'Link Hotel Nha Trang';
+    if (voucherLocation) voucherLocation.textContent = '123 Trần Phú, Nha Trang, Khánh Hòa';
+    
+    if (voucherCheckin) voucherCheckin.textContent = formatDate(bookingData.checkIn);
+    if (voucherCheckout) voucherCheckout.textContent = formatDate(bookingData.checkOut);
+    if (voucherNights) voucherNights.textContent = `${bookingData.nights} đêm`;
+    
+    // Handle guests count
+    const guests = bookingData.guests || totalRooms * 2; // Default 2 guests per room if not specified
+    if (voucherGuests) voucherGuests.textContent = `${guests} người`;
+    
+    if (voucherRoomType) voucherRoomType.textContent = roomName;
+    
+    // Customer info
+    const customerName = bookingData.fullName || '-';
+    const customerNameEl = document.getElementById('voucherCustomerName');
+    if (customerNameEl) customerNameEl.textContent = customerName;
+    
+    // Payment breakdown
+    const roomTotal = bookingData.roomTotal || 0;
+    const serviceFee = bookingData.serviceFee || 100000;
+    const discount = bookingData.discount || 0;
+    
+    const voucherPaymentNights = document.getElementById('voucherPaymentNights');
+    const voucherPaymentRoom = document.getElementById('voucherPaymentRoom');
+    const voucherPaymentService = document.getElementById('voucherPaymentService');
+    const voucherPaymentTotal = document.getElementById('voucherPaymentTotal');
+    const voucherPaymentMethod = document.getElementById('voucherPaymentMethod');
+    
+    if (voucherPaymentNights) voucherPaymentNights.textContent = bookingData.nights;
+    if (voucherPaymentRoom) voucherPaymentRoom.textContent = formatCurrency(roomTotal);
+    if (voucherPaymentService) voucherPaymentService.textContent = formatCurrency(serviceFee);
+    if (voucherPaymentTotal) voucherPaymentTotal.textContent = formatCurrency(bookingData.total);
+    
+    // Payment method
+    const paymentMethodText = bookingData.paymentMethod === 'vnpay' 
+        ? 'VNPay - Đã thanh toán' 
+        : 'Thanh toán khi nhận phòng';
+    if (voucherPaymentMethod) voucherPaymentMethod.textContent = paymentMethodText;
+    
+    // Discount (if any)
+    const discountRow = document.getElementById('voucherPaymentDiscountRow');
+    if (discount > 0 && discountRow) {
+        discountRow.style.display = 'flex';
+        const voucherPaymentCode = document.getElementById('voucherPaymentCode');
+        const voucherPaymentDiscount = document.getElementById('voucherPaymentDiscount');
+        if (voucherPaymentCode) voucherPaymentCode.textContent = bookingData.voucherCode || '';
+        if (voucherPaymentDiscount) voucherPaymentDiscount.textContent = '-' + formatCurrency(discount);
+    } else if (discountRow) {
+        discountRow.style.display = 'none';
+    }
+    
+    // Booking code
+    const bookingCode = generateOrderCode();
+    const voucherBookingCode = document.getElementById('voucherBookingCode');
+    if (voucherBookingCode) voucherBookingCode.textContent = bookingCode;
     
     successModal.style.display = 'flex';
 }
@@ -552,3 +678,6 @@ function showBookingSuccessModal(bookingData) {
 function generateOrderCode() {
     return 'BK' + Date.now().toString().slice(-8);
 }
+
+// Export functions for cart system
+export { showQRPaymentModal, showBookingSuccessModal };

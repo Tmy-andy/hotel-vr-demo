@@ -95,9 +95,9 @@ function attachRoomCardListeners() {
             const roomId = e.currentTarget.dataset.roomId;
             const room = state.hotelData.rooms.find(r => r.id === roomId);
             if (room) {
-                // Import dynamically to avoid circular dependency
-                import('./booking.js').then(({ openNewBookingModal }) => {
-                    openNewBookingModal(room);
+                // Import cart system dynamically
+                import('./booking-cart.js').then(({ openBookingModalCart }) => {
+                    openBookingModalCart(room);
                 });
             }
         });

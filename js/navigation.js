@@ -23,6 +23,7 @@ import {
     calculateBookingPrice,
     openNewBookingModal
 } from './booking.js';
+import { openBookingModalCart } from './booking-cart.js';
 
 // ===== Change Language =====
 export function changeLanguage(lang) {
@@ -95,9 +96,8 @@ export function setupEventListeners() {
     // Book room button in room-info-panel
     if (elements.btnBookRoom) {
         elements.btnBookRoom.addEventListener('click', () => {
-            if (state.selectedRoom) {
-                openNewBookingModal(state.selectedRoom);
-            }
+            // Always open cart modal with all rooms, regardless of current section
+            openBookingModalCart();
         });
     }
     

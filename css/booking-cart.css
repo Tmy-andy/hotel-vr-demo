@@ -1,0 +1,809 @@
+/* ===== BOOKING MODAL CART SYSTEM ===== */
+
+.new-booking-modal-wrapper-cart {
+    position: relative;
+    width: 95%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: #f6f7f8;
+    border-radius: 16px;
+    box-shadow: 0 25px 100px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.new-booking-container-cart {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ===== LEFT COLUMN (Cart & Contact) ===== */
+.new-booking-left-cart {
+    flex: 1;
+    width: 55%;
+    padding: 40px;
+    overflow-y: auto;
+    border-right: 1px solid #e5e7eb;
+    position: relative;
+}
+
+.new-booking-left-cart::-webkit-scrollbar {
+    width: 6px;
+}
+
+.new-booking-left-cart::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+/* ===== RIGHT COLUMN (Summary & Payment) ===== */
+.new-booking-right-cart {
+    width: 45%;
+    padding: 40px;
+    background: #fafbfc;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-booking-right-cart::-webkit-scrollbar {
+    width: 6px;
+}
+
+.new-booking-right-cart::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+/* ===== FORM SECTION (Contact Info) ===== */
+.new-form-group-full {
+    grid-column: 1 / -1;
+}
+
+/* ===== CART SECTION ===== */
+.cart-section {
+    margin-bottom: 32px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d141b;
+    margin: 0;
+}
+
+.btn-add-room {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    color: #137fec;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-add-room:hover {
+    background: rgba(19, 127, 236, 0.1);
+}
+
+.btn-add-room i {
+    font-size: 16px;
+}
+
+/* ===== CART ITEMS WRAPPER (SCROLLABLE) ===== */
+.cart-items-wrapper {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-right: -8px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* ===== CART ITEMS ===== */
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cart-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    background: white;
+    transition: box-shadow 0.3s;
+}
+
+.cart-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.cart-item-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+}
+
+.cart-item-info p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.cart-item-remove {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.cart-item-remove:hover {
+    color: #ef4444;
+}
+
+.cart-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #d1d5db;
+    border-radius: 50%;
+    background: white;
+    color: #374151;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quantity-btn:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.quantity-value {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 500;
+    color: #0d141b;
+}
+
+.cart-item-price {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1f2937;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #9ca3af;
+}
+
+.cart-empty i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.cart-empty p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ===== ROOM SELECTION OVERLAY ===== */
+.room-selection-overlay {
+    position: absolute;
+    inset: 0;
+    background: #f6f7f8;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    animation: slideInFromBottom 0.3s ease-out;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.room-selection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.room-selection-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0d141b;
+    margin: 0;
+}
+
+.btn-close-overlay {
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.3s;
+}
+
+.btn-close-overlay:hover {
+    color: #1f2937;
+}
+
+.room-selection-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 40px;
+}
+
+.room-selection-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.room-selection-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.room-option-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background: white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.room-option-card:hover {
+    border-color: #137fec;
+    box-shadow: 0 4px 12px rgba(19, 127, 236, 0.1);
+}
+
+.room-option-image {
+    width: 192px;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.room-option-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.room-option-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.room-option-badge {
+    font-size: 13px;
+    font-weight: 600;
+    color: #137fec;
+    margin: 4px 0 0 0;
+}
+
+.room-option-price {
+    text-align: right;
+}
+
+.room-option-price-amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.room-option-price-unit {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.room-option-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 12px 0;
+}
+
+.room-option-features {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.room-option-feature {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.room-option-feature i {
+    font-size: 16px;
+}
+
+.room-option-description {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+.room-option-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-add-to-cart {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: #137fec;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-add-to-cart:hover {
+    background: #0d6efd;
+}
+
+.btn-add-to-cart:disabled {
+    background: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.room-selection-footer {
+    padding: 20px 40px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.btn-done-selection {
+    width: 100%;
+    padding: 14px;
+    background: #e5e7eb;
+    color: #1f2937;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-done-selection:hover {
+    background: #d1d5db;
+}
+
+/* ===== RIGHT COLUMN (Summary) ===== */
+.new-booking-right-cart {
+    width: 45%;
+    padding: 40px;
+    background: #fafbfc;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-booking-right-cart::-webkit-scrollbar {
+    width: 6px;
+}
+
+.new-booking-right-cart::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+/* ===== BOOKING DATES SUMMARY ===== */
+.booking-dates-summary {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.date-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.date-label {
+    color: #6b7280;
+}
+
+.date-value {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.stay-duration {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 12px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.stay-duration strong {
+    color: #1f2937;
+}
+
+/* ===== MINI CALENDAR TRIGGER ===== */
+.mini-calendar-trigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.mini-calendar-trigger:hover {
+    border-color: #137fec;
+    box-shadow: 0 2px 8px rgba(19, 127, 236, 0.1);
+}
+
+.mini-calendar-trigger i {
+    color: #137fec;
+    font-size: 18px;
+}
+
+.mini-calendar-trigger span {
+    color: #4b5563;
+    font-weight: 500;
+}
+
+/* ===== CALENDAR POPUP ===== */
+.calendar-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    z-index: 1000;
+    min-width: 420px;
+    max-width: 480px;
+}
+
+.new-calendar {
+    margin: 16px 0;
+}
+
+.new-cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+    text-align: center;
+}
+
+.new-cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #1f2937;
+    min-height: 44px;
+}
+
+.cal-day:not(.disabled):hover {
+    background: #f3f4f6;
+}
+
+.cal-day.disabled {
+    color: #d1d5db;
+    cursor: not-allowed;
+}
+
+.cal-day.start-date,
+.cal-day.end-date {
+    background: #137fec;
+    color: white;
+}
+
+.cal-day.in-range {
+    background: rgba(19, 127, 236, 0.2);
+    color: #137fec;
+}
+
+.cal-day.single {
+    background: #137fec;
+    color: white;
+}
+
+.new-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.current-month {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.new-cal-nav {
+    background: #f3f4f6;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: #1f2937;
+}
+
+.new-cal-nav:hover {
+    background: #e5e7eb;
+}
+
+.btn-confirm-dates {
+    width: 100%;
+    padding: 14px;
+    background: #137fec;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-confirm-dates:hover {
+    background: #0d6efd;
+}
+
+/* ===== ROOMS SUMMARY ===== */
+.rooms-summary {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.room-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.room-summary-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.room-summary-info {
+    flex: 1;
+}
+
+.room-summary-info p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.room-summary-name {
+    color: #1f2937;
+    font-weight: 600;
+    margin-bottom: 4px !important;
+}
+
+.room-summary-detail {
+    color: #6b7280;
+    font-size: 13px !important;
+}
+
+.room-summary-price {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .new-booking-modal-wrapper-cart {
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+    
+    .new-booking-container-cart {
+        flex-direction: column;
+        overflow: visible;
+        height: auto;
+    }
+
+    .new-booking-left-cart,
+    .new-booking-right-cart {
+        width: 100%;
+        border-right: none;
+        overflow-y: visible;
+        max-height: none;
+    }
+    
+    .new-booking-left-cart {
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .new-booking-right-cart {
+        border-bottom: none;
+    }
+
+    .room-option-card {
+        flex-direction: column;
+    }
+
+    .room-option-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    /* Hide individual scrollbars, use modal scrollbar instead */
+    .new-booking-left-cart::-webkit-scrollbar,
+    .new-booking-right-cart::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .cart-items-wrapper {
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .new-booking-modal-wrapper-cart {
+        width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+    
+    .new-booking-left-cart,
+    .new-booking-right-cart {
+        padding: 20px;
+    }
+
+    .room-selection-header,
+    .room-selection-content,
+    .room-selection-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .cart-item-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .cart-item-price {
+        align-self: flex-end;
+    }
+    
+    .new-booking-title {
+        font-size: 22px;
+    }
+    
+    .cart-title,
+    .new-section-title {
+        font-size: 16px;
+    }
+}

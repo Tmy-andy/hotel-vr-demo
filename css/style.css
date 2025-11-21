@@ -4124,6 +4124,35 @@ body.ui-hidden .toggle-buttons-btn {
     line-height: 1.5;
 }
 
+.qr-actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.qr-confirm-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: #137fec;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.qr-confirm-btn:hover {
+    background: #0d6efd;
+}
+
+.qr-confirm-btn i {
+    font-size: 18px;
+}
+
 /* ===== BOOKING SUCCESS MODAL ===== */
 .success-voucher-wrapper {
     position: relative;

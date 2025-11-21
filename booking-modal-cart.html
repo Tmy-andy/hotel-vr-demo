@@ -1,0 +1,164 @@
+<!-- NEW BOOKING MODAL WITH CART SYSTEM -->
+<div class="modal" id="newBookingModal" style="display: none; align-items: center; justify-content: center;">
+    <div class="new-booking-modal-wrapper-cart">
+        <button class="new-modal-close-btn" id="closeNewBookingModal">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="new-booking-container-cart">
+            <!-- Left Column: Cart & Contact Info -->
+            <div class="new-booking-left-cart">
+                <h2 class="new-booking-title">Thông tin đặt phòng</h2>
+
+                <!-- Cart Section -->
+                <div class="cart-section">
+                    <div class="cart-header">
+                        <h3 class="cart-title">Giỏ hàng của bạn</h3>
+                        <button class="btn-add-room" id="btnSelectMoreRooms">
+                            <i class="fas fa-plus"></i>
+                            <span>Chọn hạng phòng khác</span>
+                        </button>
+                    </div>
+
+                    <!-- Cart Items -->
+                    <div class="cart-items" id="cartItemsContainer">
+                        <!-- Cart items will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Room Selection Overlay -->
+                <div class="room-selection-overlay" id="roomSelectionOverlay" style="display: none;">
+                    <div class="room-selection-header">
+                        <h3>Chọn hạng phòng</h3>
+                        <button class="btn-close-overlay" id="btnCloseRoomSelection">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="room-selection-content" id="roomSelectionContent">
+                        <!-- Available rooms will be loaded here -->
+                    </div>
+
+                    <div class="room-selection-footer">
+                        <button class="btn-done-selection" id="btnDoneRoomSelection">Xong</button>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="new-form-section">
+                    <h3 class="new-section-title">Thông tin liên hệ</h3>
+                    <div class="new-form-grid">
+                        <div class="new-form-group">
+                            <label>Họ và tên</label>
+                            <input type="text" id="newFullName" placeholder="Nhập họ và tên của bạn">
+                        </div>
+                        <div class="new-form-group">
+                            <label>Số điện thoại</label>
+                            <input type="tel" id="newPhone" placeholder="Nhập số điện thoại">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Summary & Payment -->
+            <div class="new-booking-right-cart">
+                <h3 class="new-summary-title">Tóm tắt đặt phòng</h3>
+
+                <!-- Booking Dates -->
+                <div class="booking-dates-summary">
+                    <div class="date-info">
+                        <span class="date-label">Ngày nhận phòng:</span>
+                        <span class="date-value" id="summaryCheckIn">--/--/----</span>
+                    </div>
+                    <div class="date-info">
+                        <span class="date-label">Ngày trả phòng:</span>
+                        <span class="date-value" id="summaryCheckOut">--/--/----</span>
+                    </div>
+                    <p class="stay-duration">Thời gian lưu trú: <strong><span id="summaryNights">0</span> đêm</strong></p>
+                </div>
+
+                <!-- Calendar Section (Mini) -->
+                <div class="mini-calendar-trigger" id="miniCalendarTrigger">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Chọn ngày nhận/trả phòng</span>
+                </div>
+
+                <!-- Calendar Popup -->
+                <div class="calendar-popup" id="calendarPopup" style="display: none;">
+                    <div class="new-calendar-header">
+                        <button class="new-cal-nav" id="prevMonth">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="current-month" id="currentMonthYear">Tháng 9, 2024</span>
+                        <button class="new-cal-nav" id="nextMonth">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="new-calendar">
+                        <div class="new-cal-weekdays">
+                            <span>CN</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span>
+                        </div>
+                        <div class="new-cal-days" id="calendarDays">
+                            <!-- Calendar days will be generated by JS -->
+                        </div>
+                    </div>
+                    <button class="btn-confirm-dates" id="btnConfirmDates">Xác nhận</button>
+                </div>
+
+                <!-- Room Summary -->
+                <div class="rooms-summary" id="roomsSummary">
+                    <!-- Room summary items will be generated -->
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="new-price-breakdown">
+                    <div class="new-price-row">
+                        <span>Tiền phòng (<span id="totalRoomsCount">0</span> phòng, <span id="summaryNightsCount">0</span> đêm)</span>
+                        <span id="summaryRoomPrice">0đ</span>
+                    </div>
+                    <div class="new-price-row">
+                        <span>Phí dịch vụ</span>
+                        <span id="summaryServiceFee">100.000đ</span>
+                    </div>
+                    <div class="new-price-row voucher-discount" id="voucherDiscountRow" style="display: none;">
+                        <span>Giảm giá</span>
+                        <span class="discount-amount" id="summaryDiscount">-0đ</span>
+                    </div>
+                </div>
+
+                <!-- Voucher Input -->
+                <div class="new-voucher-section">
+                    <div class="new-voucher-input-wrapper">
+                        <input type="text" id="voucherInput" placeholder="Nhập mã giảm giá" class="new-voucher-input">
+                        <button type="button" id="applyVoucherBtn" class="new-apply-voucher-btn">Áp dụng</button>
+                    </div>
+                    <p class="voucher-message" id="voucherMessage"></p>
+                </div>
+
+                <div class="new-total-price">
+                    <span>Tổng cộng</span>
+                    <span id="summaryTotal">0đ</span>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="new-payment-section">
+                    <h3 class="new-payment-title">Phương thức thanh toán</h3>
+                    <div class="new-payment-options">
+                        <label class="new-payment-option active">
+                            <input type="radio" name="paymentMethod" value="cash" checked>
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Thanh toán khi nhận phòng</span>
+                        </label>
+                        <label class="new-payment-option">
+                            <input type="radio" name="paymentMethod" value="vnpay">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4gjbAqR0JnLl8mAtJW8vNf8jqE2AsamE_ONIXxa4ohMZGidv67UmTRVn8gmy-bsBGpP9vyNcqmMIp8PjDtrv9zkfP_hYLk2arhM2Wdc5ReMMl1HJ9D3fKr8c8GSkNQcoVp92utnwggFoHxxL4my8ZWWVjzEChx_1K8BVhC6prm9NclQ_FcUzsXNvSpMLCI-5NbHxVmReO9_yJzlO9yFKSbug09rY9r33s_1XqLj9X9jUpLlyx96OPXMaP3Ui3s16-loSNOl5ONns"
+                                alt="VNPay" class="vnpay-logo">
+                            <span>Thanh toán online qua VNPay</span>
+                        </label>
+                    </div>
+                    <button class="new-booking-submit-btn" id="newBookingSubmit">Hoàn tất đặt phòng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,6 +16,7 @@
     <!-- Custom CSS - REFACTORED (Modular Structure) -->
     <link rel="stylesheet" href="css/style-new.css">
     <link rel="stylesheet" href="css/toggle-btn.css">
+    <link rel="stylesheet" href="css/booking-cart.css">
     
     <!-- OLD MONOLITHIC CSS (Backup - có thể xóa sau khi test OK) -->
     <!-- <link rel="stylesheet" href="css/style.css"> -->
@@ -344,19 +345,19 @@
         </div>
     </div>
 
-    <!-- NEW BOOKING MODAL -->
+    <!-- NEW BOOKING MODAL WITH CART SYSTEM -->
     <div class="modal" id="newBookingModal" style="display: none; align-items: center; justify-content: center;">
-        <div class="new-booking-modal-wrapper">
+        <div class="new-booking-modal-wrapper-cart">
             <button class="new-modal-close-btn" id="closeNewBookingModal">
                 <i class="fas fa-times"></i>
             </button>
 
-            <div class="new-booking-container">
-                <!-- Left Column: Form -->
-                <div class="new-booking-left">
+            <div class="new-booking-container-cart">
+                <!-- Left Column: Contact Info & Room List -->
+                <div class="new-booking-left-cart">
                     <h2 class="new-booking-title">Thông tin đặt phòng</h2>
 
-                    <!-- Contact Info -->
+                    <!-- Contact Info (MOVED TO TOP) -->
                     <div class="new-form-section">
                         <h3 class="new-section-title">Thông tin liên hệ</h3>
                         <div class="new-form-grid">
@@ -368,28 +369,83 @@
                                 <label>Số điện thoại</label>
                                 <input type="tel" id="newPhone" placeholder="Nhập số điện thoại">
                             </div>
-                        </div>
-
-                        <!-- Guest Counter -->
-                        <div class="new-guest-counter">
-                            <div class="new-counter-label">
-                                <i class="fas fa-users"></i>
-                                <span>Số lượng khách</span>
-                            </div>
-                            <div class="new-counter-controls">
-                                <button type="button" class="new-counter-btn" id="decreaseGuests">-</button>
-                                <span class="new-counter-value" id="guestCount">2</span>
-                                <button type="button" class="new-counter-btn" id="increaseGuests">+</button>
+                            <div class="new-form-group new-form-group-full">
+                                <label>Email</label>
+                                <input type="email" id="newEmail" placeholder="Nhập địa chỉ email">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Calendar Section -->
-                    <div class="new-form-section">
-                        <h3 class="new-section-title">Thời gian lưu trú</h3>
+                    <!-- Room Selection Section (MOVED TO BOTTOM) -->
+                    <div class="cart-section">
+                        <div class="cart-header">
+                            <h3 class="cart-title">Phòng đã chọn</h3>
+                            <button class="btn-add-room" id="btnSelectMoreRooms">
+                                <i class="fas fa-plus"></i>
+                                <span>Thêm phòng</span>
+                            </button>
+                        </div>
+
+                        <!-- Cart Items (SCROLLABLE) -->
+                        <div class="cart-items-wrapper">
+                            <div class="cart-items" id="cartItemsContainer">
+                                <!-- Cart items will be dynamically generated -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Selection Overlay -->
+                    <div class="room-selection-overlay" id="roomSelectionOverlay" style="display: none;">
+                        <div class="room-selection-header">
+                            <h3>Chọn hạng phòng</h3>
+                            <button class="btn-close-overlay" id="btnCloseRoomSelection">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+
+                        <div class="room-selection-content" id="roomSelectionContent">
+                            <!-- Available rooms will be loaded here -->
+                        </div>
+
+                        <div class="room-selection-footer">
+                            <button class="btn-done-selection" id="btnDoneRoomSelection">Xong</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Summary & Payment -->
+                <div class="new-booking-right-cart">
+                    <h3 class="new-summary-title">Tóm tắt đặt phòng</h3>
+
+                    <!-- Booking Dates -->
+                    <div class="booking-dates-summary">
+                        <div class="date-info">
+                            <span class="date-label">Ngày nhận phòng:</span>
+                            <span class="date-value" id="summaryCheckIn">--/--/----</span>
+                        </div>
+                        <div class="date-info">
+                            <span class="date-label">Ngày trả phòng:</span>
+                            <span class="date-value" id="summaryCheckOut">--/--/----</span>
+                        </div>
+                        <p class="stay-duration">Thời gian lưu trú: <strong><span id="summaryNights">0</span> đêm</strong></p>
+                    </div>
+
+                    <!-- Calendar Section (Mini) -->
+                    <div class="mini-calendar-trigger" id="miniCalendarTrigger">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Chọn ngày nhận/trả phòng</span>
+                    </div>
+
+                    <!-- Calendar Popup -->
+                    <div class="calendar-popup" id="calendarPopup" style="display: none;">
                         <div class="new-calendar-header">
-                            <button class="new-cal-nav" id="prevMonth">Tháng 8</button>
-                            <button class="new-cal-nav active" id="currentMonth">Tháng 9</button>
+                            <button class="new-cal-nav" id="prevMonth">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span class="current-month" id="currentMonthYear">Tháng 9, 2024</span>
+                            <button class="new-cal-nav" id="nextMonth">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <div class="new-calendar">
                             <div class="new-cal-weekdays">
@@ -399,21 +455,18 @@
                                 <!-- Calendar days will be generated by JS -->
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Summary -->
-                <div class="new-booking-right">
-                    <h3 class="new-summary-title">Tóm tắt đặt phòng</h3>
-
-                    <div class="new-room-info">
-                        <p class="new-room-name" id="summaryRoomName">-</p>
-                        <p class="new-room-type" id="summaryRoomType">-</p>
+                        <button class="btn-confirm-dates" id="btnConfirmDates">Xác nhận</button>
                     </div>
 
+                    <!-- Room Summary -->
+                    <div class="rooms-summary" id="roomsSummary">
+                        <!-- Room summary items will be generated -->
+                    </div>
+
+                    <!-- Price Breakdown -->
                     <div class="new-price-breakdown">
                         <div class="new-price-row">
-                            <span>Giá phòng x <span id="summaryNights">0</span> đêm</span>
+                            <span>Tiền phòng (<span id="totalRoomsCount">0</span> phòng, <span id="summaryNightsCount">0</span> đêm)</span>
                             <span id="summaryRoomPrice">0đ</span>
                         </div>
                         <div class="new-price-row">
@@ -421,7 +474,7 @@
                             <span id="summaryServiceFee">100.000đ</span>
                         </div>
                         <div class="new-price-row voucher-discount" id="voucherDiscountRow" style="display: none;">
-                            <span>Giảm giá voucher</span>
+                            <span>Giảm giá</span>
                             <span class="discount-amount" id="summaryDiscount">-0đ</span>
                         </div>
                     </div>
@@ -429,8 +482,7 @@
                     <!-- Voucher Input -->
                     <div class="new-voucher-section">
                         <div class="new-voucher-input-wrapper">
-                            <input type="text" id="voucherInput" placeholder="Nhập mã voucher"
-                                class="new-voucher-input">
+                            <input type="text" id="voucherInput" placeholder="Nhập mã giảm giá" class="new-voucher-input">
                             <button type="button" id="applyVoucherBtn" class="new-apply-voucher-btn">Áp dụng</button>
                         </div>
                         <p class="voucher-message" id="voucherMessage"></p>
@@ -512,8 +564,14 @@
 
             <div class="qr-progress">
                 <div class="qr-progress-bar" id="qrProgressBar"></div>
-                <p class="qr-redirect-text">Sẽ tự động chuyển hướng sau <span id="qrRedirectSeconds">3</span> giây...
-                </p>
+                <p class="qr-redirect-text">Quét mã QR và thanh toán để hoàn tất đặt phòng</p>
+            </div>
+            
+            <div class="qr-actions">
+                <button class="qr-confirm-btn" id="qrConfirmPayment">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Tôi đã thanh toán</span>
+                </button>
             </div>
         </div>
     </div>
@@ -604,6 +662,10 @@
                         <div class="voucher-payment-method">
                             <span>Phương thức</span>
                             <span id="voucherPaymentMethod">-</span>
+                        </div>
+                        <div class="voucher-payment-method">
+                            <span>Mã đặt phòng</span>
+                            <span id="voucherBookingCode" style="font-weight: 600; color: #137fec;">-</span>
                         </div>
                     </div>
                 </div>
