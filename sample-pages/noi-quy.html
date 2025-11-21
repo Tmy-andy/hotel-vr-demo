@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nội quy &amp; Quy định Khách sạn</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0..1"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="font-display">
+    <div
+        class="relative flex h-auto min-h-screen w-full flex-col bg-background-light group/design-root overflow-x-hidden dark:bg-background-dark">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                    <header
+                        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-700 px-4 sm:px-10 py-3">
+                        <div class="flex items-center gap-4 text-slate-800 dark:text-slate-200">
+                            <div class="size-6 text-primary">
+                                <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd"
+                                        d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z"
+                                        fill="currentColor" fill-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <h2
+                                class="text-slate-800 dark:text-slate-200 text-lg font-bold leading-tight tracking-[-0.015em]">
+                                HotelName</h2>
+                        </div>
+                        <div class="hidden md:flex flex-1 justify-end gap-8">
+                            <div class="flex items-center gap-9">
+                                <a class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-normal"
+                                    href="#">Trang chủ</a>
+                                <a class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-normal"
+                                    href="#">Phòng</a>
+                                <a class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-normal"
+                                    href="#">Tiện ích</a>
+                                <a class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-normal"
+                                    href="#">Liên hệ</a>
+                                <a class="text-primary text-sm font-bold leading-normal" href="#">Nội quy &amp; Quy
+                                    định</a>
+                            </div>
+                            <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+                                <span class="truncate">Đặt ngay</span>
+                            </button>
+                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                                data-alt="User avatar placeholder"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTxfs3C8VM6j4EQcIVi_wRqfaDyWGbmrx85lJmzXxqo1tKktTOrlpFJYocakBdnI7ZpZuvPkpRt6g1yeAaEyo3NFfL90-71ThzbqkvtlJgBQn4czYFRxQxvFI_gv-Y95O0USLTZY_PCblqTyXXDMySpivhVnqD655UmZG56fsm8yLkcaK6OQF7VQMZXh2Y5qXc0vlbmORlzItYQmCod34srCMvdsECuoyZXFL9Fy9E0TnY9w2o3iNpywfYK8c89_2f_Y2U9ie0V1o");'>
+                            </div>
+                        </div>
+                    </header>
+                    <main class="flex flex-col gap-8 md:gap-12 py-8 md:py-16">
+                        <div class="flex flex-wrap justify-between gap-3 p-4">
+                            <div class="flex min-w-72 flex-col gap-3 text-center w-full">
+                                <p
+                                    class="text-slate-800 dark:text-slate-100 text-4xl font-black leading-tight tracking-[-0.033em]">
+                                    Nội quy &amp; Quy định của Khách sạn</p>
+                                <p
+                                    class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal max-w-2xl mx-auto">
+                                    Để đảm bảo trải nghiệm tốt nhất cho tất cả khách hàng, chúng tôi rất mong quý khách
+                                    vui lòng tuân thủ các quy định dưới đây.</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col p-4 gap-4">
+                            <details
+                                class="flex flex-col rounded-lg border border-gray-200 bg-white dark:bg-slate-800 dark:border-gray-700 px-5 py-3 group"
+                                open="">
+                                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+                                    <div class="flex items-center gap-4">
+                                        <span class="material-symbols-outlined text-primary">schedule</span>
+                                        <p
+                                            class="text-slate-800 dark:text-slate-200 text-base font-bold leading-normal">
+                                            Quy định chung</p>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-open:rotate-180">expand_more</span>
+                                </summary>
+                                <div
+                                    class="text-slate-600 dark:text-slate-300 text-sm font-normal leading-relaxed pb-2 pt-2 pl-10">
+                                    <ul class="list-disc space-y-2">
+                                        <li>Giờ nhận phòng (check-in) là từ 14:00.</li>
+                                        <li>Giờ trả phòng (check-out) là trước 12:00 trưa.</li>
+                                        <li>Vui lòng xuất trình giấy tờ tùy thân hợp lệ khi làm thủ tục nhận phòng.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details
+                                class="flex flex-col rounded-lg border border-gray-200 bg-white dark:bg-slate-800 dark:border-gray-700 px-5 py-3 group">
+                                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+                                    <div class="flex items-center gap-4">
+                                        <span class="material-symbols-outlined text-primary">security</span>
+                                        <p
+                                            class="text-slate-800 dark:text-slate-200 text-base font-bold leading-normal">
+                                            An ninh và An toàn</p>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-open:rotate-180">expand_more</span>
+                                </summary>
+                                <div
+                                    class="text-slate-600 dark:text-slate-300 text-sm font-normal leading-relaxed pb-2 pt-2 pl-10">
+                                    <ul class="list-disc space-y-2">
+                                        <li>Khách tham quan phải được đăng ký tại quầy lễ tân.</li>
+                                        <li>Luôn khóa cửa phòng khi ra ngoài để đảm bảo an toàn cho tài sản cá nhân.
+                                        </li>
+                                        <li>Hút thuốc chỉ được phép tại các khu vực quy định.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details
+                                class="flex flex-col rounded-lg border border-gray-200 bg-white dark:bg-slate-800 dark:border-gray-700 px-5 py-3 group">
+                                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+                                    <div class="flex items-center gap-4">
+                                        <span class="material-symbols-outlined text-primary">notifications_off</span>
+                                        <p
+                                            class="text-slate-800 dark:text-slate-200 text-base font-bold leading-normal">
+                                            Tiếng ồn và Trật tự</p>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-open:rotate-180">expand_more</span>
+                                </summary>
+                                <div
+                                    class="text-slate-600 dark:text-slate-300 text-sm font-normal leading-relaxed pb-2 pt-2 pl-10">
+                                    <ul class="list-disc space-y-2">
+                                        <li>Vui lòng giữ im lặng trong khoảng thời gian từ 22:00 đến 07:00 sáng.</li>
+                                        <li>Hạn chế gây ồn ào tại các khu vực chung như hành lang và sảnh.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details
+                                class="flex flex-col rounded-lg border border-gray-200 bg-white dark:bg-slate-800 dark:border-gray-700 px-5 py-3 group">
+                                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+                                    <div class="flex items-center gap-4">
+                                        <span class="material-symbols-outlined text-primary">pool</span>
+                                        <p
+                                            class="text-slate-800 dark:text-slate-200 text-base font-bold leading-normal">
+                                            Sử dụng Tiện ích</p>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-open:rotate-180">expand_more</span>
+                                </summary>
+                                <div
+                                    class="text-slate-600 dark:text-slate-300 text-sm font-normal leading-relaxed pb-2 pt-2 pl-10">
+                                    <ul class="list-disc space-y-2">
+                                        <li>Hồ bơi và phòng gym hoạt động trong khung giờ quy định.</li>
+                                        <li>Vui lòng tuân thủ các hướng dẫn an toàn tại khu vực tiện ích.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details
+                                class="flex flex-col rounded-lg border border-gray-200 bg-white dark:bg-slate-800 dark:border-gray-700 px-5 py-3 group">
+                                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+                                    <div class="flex items-center gap-4">
+                                        <span class="material-symbols-outlined text-primary">assignment_ind</span>
+                                        <p
+                                            class="text-slate-800 dark:text-slate-200 text-base font-bold leading-normal">
+                                            Trách nhiệm của Khách hàng</p>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-open:rotate-180">expand_more</span>
+                                </summary>
+                                <div
+                                    class="text-slate-600 dark:text-slate-300 text-sm font-normal leading-relaxed pb-2 pt-2 pl-10">
+                                    <ul class="list-disc space-y-2">
+                                        <li>Khách hàng chịu trách nhiệm bồi thường cho bất kỳ thiệt hại nào đối với tài
+                                            sản của khách sạn.</li>
+                                        <li>Khách sạn không chịu trách nhiệm đối với việc mất mát tài sản cá nhân.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details
+                                class="flex flex-col rounded-lg border border-gray-200 bg-white dark:bg-slate-800 dark:border-gray-700 px-5 py-3 group">
+                                <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+                                    <div class="flex items-center gap-4">
+                                        <span class="material-symbols-outlined text-primary">pets</span>
+                                        <p
+                                            class="text-slate-800 dark:text-slate-200 text-base font-bold leading-normal">
+                                            Chính sách Vật nuôi</p>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-open:rotate-180">expand_more</span>
+                                </summary>
+                                <div
+                                    class="text-slate-600 dark:text-slate-300 text-sm font-normal leading-relaxed pb-2 pt-2 pl-10">
+                                    <ul class="list-disc space-y-2">
+                                        <li>Khách sạn chúng tôi không cho phép mang theo vật nuôi. Xin chân thành cảm ơn
+                                            sự hợp tác của quý khách.</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="p-4">
+                            <h3
+                                class="text-slate-800 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4 text-center">
+                                Thông tin liên hệ</h3>
+                            <p
+                                class="text-slate-600 dark:text-slate-300 text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">
+                                Nếu có bất kỳ câu hỏi hoặc cần hỗ trợ, vui lòng liên hệ quầy lễ tân bất cứ lúc nào.
+                                Chúng tôi luôn sẵn sàng phục vụ 24/7.</p>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

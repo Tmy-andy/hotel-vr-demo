@@ -63,15 +63,19 @@ const pageTitles = {
     vi: {
         introduction: 'GIỚI THIỆU LINK HOTEL',
         rooms: 'PHÒNG NGHỈ',
+        dining: 'ẨM THỰC',
         facilities: 'TIỆN NGHI',
         policies: 'CHÍNH SÁCH',
+        rules: 'NỘI QUY',
         contact: 'LIÊN HỆ'
     },
     en: {
         introduction: 'ABOUT LINK HOTEL',
         rooms: 'ROOMS',
+        dining: 'DINING',
         facilities: 'FACILITIES',
         policies: 'POLICIES',
+        rules: 'RULES',
         contact: 'CONTACT'
     }
 };
@@ -346,7 +350,7 @@ function loadPage(page) {
     
     // Show/hide search based on page
     if (elements.searchSection) {
-        elements.searchSection.style.display = page === 'rooms' ? 'block' : 'none';
+        elements.searchSection.style.display = (page === 'rooms' || page === 'dining') ? 'block' : 'none';
     }
     
     // Add/remove trang-duc class for introduction page
@@ -364,6 +368,9 @@ function loadPage(page) {
         case 'rooms':
             renderRooms();
             break;
+        case 'dining':
+            renderDining();
+            break;
         case 'vouchers':
             renderVouchers();
             break;
@@ -372,6 +379,9 @@ function loadPage(page) {
             break;
         case 'policies':
             renderPolicies();
+            break;
+        case 'rules':
+            renderRules();
             break;
         case 'contact':
             renderContact();
@@ -822,7 +832,7 @@ function renderVouchers() {
                             </div>
                             
                             <button class="voucher-claim-btn" data-code="${voucher.code}">
-                                <i class="fas fa-ticket-alt"></i>
+                                <i class="fa-solid fa-ticket"></i>
                                 ${lang === 'vi' ? 'Lấy Mã Voucher' : 'Get Voucher Code'}
                             </button>
                         </div>
@@ -1142,13 +1152,12 @@ function renderContact() {
     const html = `
         <div class="contact-page-content">
             <!-- Hero Section -->
-            <section class="contact-hero">
-                <div class="contact-hero-overlay"></div>
-                <div class="contact-hero-text">
-                    <h1>${lang === 'vi' ? 'LIÊN HỆ VỚI CHÚNG TÔI' : 'GET IN TOUCH'}</h1>
-                    <p>${lang === 'vi' ? 'Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7' : 'We are always ready to assist you 24/7'}</p>
-                </div>
-            </section>
+            <div class="contact-header">
+                <h1 class="contact-main-title">${lang === 'vi' ? 'Liên Hệ Với Chúng Tôi' : 'Contact Us'}</h1>
+                <p class="contact-subtitle">
+                    ${lang === 'vi' ? 'Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7' : 'We are always ready to assist you 24/7'}
+                </p>
+            </div>
 
             <!-- Contact Main Content -->
             <section class="contact-main">
@@ -1287,6 +1296,171 @@ function renderContact() {
     }, 100);
 }
 
+// ===== Render Rules (Nội Quy) =====
+function renderRules() {
+    const lang = state.currentLanguage;
+    
+    const rulesData = [
+        {
+            id: 'general',
+            icon: 'fa-clock',
+            title: { vi: 'Quy định chung', en: 'General Rules' },
+            content: {
+                vi: ['Giờ nhận phòng (check-in) là từ 14:00.', 'Giờ trả phòng (check-out) là trước 12:00 trưa.', 'Vui lòng xuất trình giấy tờ tùy thân hợp lệ khi làm thủ tục nhận phòng.'],
+                en: ['Check-in time is from 2:00 PM.', 'Check-out time is before 12:00 PM.', 'Please present valid identification when checking in.']
+            }
+        },
+        {
+            id: 'security',
+            icon: 'fa-shield',
+            title: { vi: 'An ninh và An toàn', en: 'Security & Safety' },
+            content: {
+                vi: ['Khách tham quan phải được đăng ký tại quầy lễ tân.', 'Luôn khóa cửa phòng khi ra ngoài để đảm bảo an toàn cho tài sản cá nhân.', 'Hút thuốc chỉ được phép tại các khu vực quy định.'],
+                en: ['Guests must register at the reception.', 'Always lock your room door when going out to ensure safety of personal belongings.', 'Smoking is only allowed in designated areas.']
+            }
+        },
+        {
+            id: 'noise',
+            icon: 'fa-volume-mute',
+            title: { vi: 'Tiếng ồn và Trật tự', en: 'Noise & Order' },
+            content: {
+                vi: ['Vui lòng giữ im lặng trong khoảng thời gian từ 22:00 đến 07:00 sáng.', 'Hạn chế gây ồn ào tại các khu vực chung như hành lang và sảnh.'],
+                en: ['Please keep quiet between 10:00 PM and 7:00 AM.', 'Avoid making noise in common areas such as hallways and lobbies.']
+            }
+        },
+        {
+            id: 'facilities',
+            icon: 'fa-swimming-pool',
+            title: { vi: 'Sử dụng Tiện ích', en: 'Facilities Usage' },
+            content: {
+                vi: ['Hồ bơi và phòng gym hoạt động trong khung giờ quy định.', 'Vui lòng tuân thủ các hướng dẫn an toàn tại khu vực tiện ích.'],
+                en: ['Pool and gym operate during designated hours.', 'Please follow safety guidelines in amenity areas.']
+            }
+        },
+        {
+            id: 'responsibility',
+            icon: 'fa-user-shield',
+            title: { vi: 'Trách nhiệm của Khách hàng', en: 'Guest Responsibility' },
+            content: {
+                vi: ['Khách hàng chịu trách nhiệm bồi thường cho bất kỳ thiệt hại nào đối với tài sản của khách sạn.', 'Khách sạn không chịu trách nhiệm đối với việc mất mát tài sản cá nhân.'],
+                en: ['Guests are responsible for compensating any damage to hotel property.', 'The hotel is not responsible for loss of personal belongings.']
+            }
+        },
+        {
+            id: 'pets',
+            icon: 'fa-paw',
+            title: { vi: 'Chính sách Vật nuôi', en: 'Pet Policy' },
+            content: {
+                vi: ['Khách sạn chúng tôi không cho phép mang theo vật nuôi. Xin chân thành cảm ơn sự hợp tác của quý khách.'],
+                en: ['Our hotel does not allow pets. Thank you for your understanding.']
+            }
+        }
+    ];
+    
+    const html = `
+        <div class="rules-page-content">
+            <!-- Header Section -->
+            <div class="rules-header">
+                <h1 class="rules-main-title">${lang === 'vi' ? 'Nội Quy & Quy Định Khách Sạn' : 'Hotel Rules & Regulations'}</h1>
+                <p class="rules-subtitle">
+                    ${lang === 'vi' 
+                        ? 'Để đảm bảo trải nghiệm tốt nhất cho tất cả khách hàng, chúng tôi rất mong quý khách vui lòng tuân thủ các quy định dưới đây.' 
+                        : 'To ensure the best experience for all guests, we kindly ask you to follow the regulations below.'}
+                </p>
+            </div>
+
+            <!-- Rules Accordion Grid -->
+            <div class="rules-accordion-container">
+                ${rulesData.map((rule, index) => `
+                    <details class="rules-accordion-item" data-index="${index}">
+                        <summary class="rules-accordion-summary">
+                            <div class="rules-accordion-icon">
+                                <i class="fas ${rule.icon}"></i>
+                            </div>
+                            <h3 class="rules-accordion-title">${rule.title[lang]}</h3>
+                            <span class="rules-accordion-indicator">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </summary>
+                        <div class="rules-accordion-content">
+                            <ul class="rules-accordion-list">
+                                ${rule.content[lang].map(item => `
+                                    <li class="rules-list-item">
+                                        <span class="rules-list-icon"><i class="fas fa-check"></i></span>
+                                        <span>${item}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </details>
+                `).join('')}
+            </div>
+
+            <!-- Contact Section -->
+            <div class="rules-contact-section">
+                <h3 class="rules-contact-title">${lang === 'vi' ? 'Thông tin liên hệ' : 'Contact Information'}</h3>
+                <p class="rules-contact-text">
+                    ${lang === 'vi' 
+                        ? 'Nếu có bất kỳ câu hỏi hoặc cần hỗ trợ, vui lòng liên hệ quầy lễ tân bất cứ lúc nào. Chúng tôi luôn sẵn sàng phục vụ 24/7.' 
+                        : 'If you have any questions or need assistance, please contact the reception at any time. We are always ready to serve 24/7.'}
+                </p>
+            </div>
+        </div>
+    `;
+    
+    elements.panelContent.innerHTML = html;
+    
+    // Add accordion animation handlers
+    setTimeout(() => {
+        addRulesAnimations();
+    }, 100);
+}
+
+// Add animations to rules accordion
+function addRulesAnimations() {
+    const accordions = document.querySelectorAll('.rules-accordion-item');
+    
+    accordions.forEach(accordion => {
+        const summary = accordion.querySelector('.rules-accordion-summary');
+        const content = accordion.querySelector('.rules-accordion-content');
+        const indicator = accordion.querySelector('.rules-accordion-indicator i');
+        
+        // Track open state
+        let isOpen = false;
+        
+        summary.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (!isOpen) {
+                // OPEN
+                isOpen = true;
+                accordion.setAttribute('open', '');
+                
+                // Calculate height
+                const scrollHeight = content.scrollHeight;
+                
+                // Set to measured height
+                content.style.maxHeight = scrollHeight + 'px';
+                content.style.opacity = '1';
+                indicator.style.transform = 'rotate(180deg)';
+            } else {
+                // CLOSE
+                isOpen = false;
+                
+                // Collapse to 0
+                content.style.maxHeight = '0px';
+                content.style.opacity = '0';
+                indicator.style.transform = 'rotate(0deg)';
+                
+                // Remove open attribute after transition
+                setTimeout(() => {
+                    accordion.removeAttribute('open');
+                }, 350);
+            }
+        });
+    });
+}
+
 // ===== Search Handler =====
 function handleSearch(e) {
     const query = e.target.value.toLowerCase().trim();
@@ -1296,26 +1470,48 @@ function handleSearch(e) {
         elements.searchClearBtn.style.display = query ? 'flex' : 'none';
     }
     
-    if (state.currentPage !== 'rooms') return;
-    
-    const allRooms = state.hotelData.rooms;
-    
-    if (!query) {
-        renderRooms(allRooms);
-        return;
-    }
-    
-    const filteredRooms = allRooms.filter(room => {
-        const nameVi = room.name.vi.toLowerCase();
-        const nameEn = room.name.en.toLowerCase();
-        const descVi = room.description.vi.toLowerCase();
-        const descEn = room.description.en.toLowerCase();
+    if (state.currentPage === 'rooms') {
+        const allRooms = state.hotelData.rooms;
         
-        return nameVi.includes(query) || nameEn.includes(query) ||
-               descVi.includes(query) || descEn.includes(query);
-    });
-    
-    renderRooms(filteredRooms);
+        if (!query) {
+            renderRooms(allRooms);
+            return;
+        }
+        
+        const filteredRooms = allRooms.filter(room => {
+            const nameVi = room.name.vi.toLowerCase();
+            const nameEn = room.name.en.toLowerCase();
+            const descVi = room.description.vi.toLowerCase();
+            const descEn = room.description.en.toLowerCase();
+            
+            return nameVi.includes(query) || nameEn.includes(query) ||
+                   descVi.includes(query) || descEn.includes(query);
+        });
+        
+        renderRooms(filteredRooms);
+    } else if (state.currentPage === 'dining') {
+        const allRestaurants = state.hotelData.restaurants;
+        
+        if (!query) {
+            renderDining(allRestaurants);
+            return;
+        }
+        
+        const filteredRestaurants = allRestaurants.filter(restaurant => {
+            const nameVi = restaurant.name.vi.toLowerCase();
+            const nameEn = restaurant.name.en.toLowerCase();
+            const descVi = restaurant.description.vi.toLowerCase();
+            const descEn = restaurant.description.en.toLowerCase();
+            const cuisineVi = restaurant.cuisine.vi.toLowerCase();
+            const cuisineEn = restaurant.cuisine.en.toLowerCase();
+            
+            return nameVi.includes(query) || nameEn.includes(query) ||
+                   descVi.includes(query) || descEn.includes(query) ||
+                   cuisineVi.includes(query) || cuisineEn.includes(query);
+        });
+        
+        renderDining(filteredRestaurants);
+    }
 }
 
 // ===== Clear Search =====
@@ -1683,6 +1879,150 @@ function addRoomInfoStyles() {
     document.head.appendChild(style);
 }
 
+// ===== Render Dining (Ẩm Thực) =====
+function renderDining(filteredRestaurants = null) {
+    const restaurants = filteredRestaurants || state.hotelData.restaurants;
+    
+    if (!restaurants || restaurants.length === 0) {
+        showEmptyState();
+        return;
+    }
+    
+    const html = `
+        <div class="content-grid">
+            ${restaurants.map(restaurant => createRestaurantCard(restaurant)).join('')}
+        </div>
+    `;
+    
+    elements.panelContent.innerHTML = html;
+    attachRestaurantCardListeners();
+}
+
+// ===== Create Restaurant Card =====
+function createRestaurantCard(restaurant) {
+    const lang = state.currentLanguage;
+    const name = restaurant.name[lang];
+    const description = restaurant.description[lang];
+    const location = restaurant.location[lang];
+    const cuisine = restaurant.cuisine[lang];
+    
+    return `
+        <div class="content-card" data-restaurant-id="${restaurant.id}">
+            <div class="card-image">
+                ${restaurant.image ? 
+                    `<img src="${restaurant.image}" alt="${name}" 
+                        onerror="this.parentElement.innerHTML='<span class=\\'card-placeholder\\'><i class=\\'fas fa-utensils\\'></i></span>'">` 
+                    : `<span class="card-placeholder"><i class="fas fa-utensils"></i></span>`
+                }
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">${name}</h3>
+                <p class="card-description">${description}</p>
+                
+                <div class="card-meta">
+                    <div class="card-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${location}</span>
+                    </div>
+                    <div class="card-meta-item">
+                        <i class="fas fa-utensils"></i>
+                        <span>${cuisine}</span>
+                    </div>
+                    <div class="card-meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>${restaurant.capacity} ${lang === 'vi' ? 'chỗ ngồi' : 'seats'}</span>
+                    </div>
+                </div>
+                
+                <div class="card-footer dining-footer">
+                    <div class="dining-hours">
+                        <i class="fas fa-clock"></i>
+                        <small>${restaurant.openingHours[lang]}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// ===== Attach Restaurant Card Listeners =====
+function attachRestaurantCardListeners() {
+    const cards = document.querySelectorAll('.content-card[data-restaurant-id]');
+    cards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            const restaurantId = e.currentTarget.dataset.restaurantId;
+            handleRestaurantClick(restaurantId);
+        });
+    });
+}
+
+// ===== Handle Restaurant Click =====
+function handleRestaurantClick(restaurantId) {
+    const restaurant = state.hotelData.restaurants.find(r => r.id === restaurantId);
+    if (!restaurant) return;
+    
+    state.selectedRoom = restaurant; // Reuse selectedRoom state for restaurant
+    
+    console.log('🍽️ Restaurant clicked:', restaurant.name.vi);
+    
+    // 1. Load VR panorama FIRST
+    if (restaurant.panoramaUrl) {
+        loadVRPanorama(restaurant);
+    }
+    
+    // 2. Close content panel - FORCE
+    console.log('🚪 Closing content panel...');
+    closeContentPanel();
+    
+    // 3. Show restaurant info panel with delay
+    setTimeout(() => {
+        console.log('📱 Opening restaurant info panel...');
+        renderRestaurantInfo(restaurant);
+        openRoomInfoPanel();
+    }, 150);
+}
+
+// ===== Render Restaurant Info =====
+function renderRestaurantInfo(restaurant) {
+    const lang = state.currentLanguage;
+    
+    elements.roomInfoTitle.textContent = restaurant.name[lang];
+    
+    const html = `
+        <div class="room-detail-section">
+            <h4><i class="fas fa-info-circle"></i> ${lang === 'vi' ? 'Giới thiệu' : 'Introduction'}</h4>
+            <p>${restaurant.description[lang]}</p>
+            
+            <div class="room-specs">
+                <div class="spec-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${restaurant.location[lang]}</span>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>${restaurant.cuisine[lang]}</span>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-users"></i>
+                    <span>${restaurant.capacity} ${lang === 'vi' ? 'chỗ ngồi' : 'seats'}</span>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-clock"></i>
+                    <span>${restaurant.openingHours[lang]}</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="room-detail-section">
+            <h4><i class="fas fa-concierge-bell"></i> ${lang === 'vi' ? 'Dịch vụ' : 'Services'}</h4>
+            <p>${restaurant.services[lang]}</p>
+        </div>
+    `;
+    
+    elements.roomInfoContent.innerHTML = html;
+    addRoomInfoStyles();
+}
+
 function addFacilitiesStyles() {
     const style = document.createElement('style');
     style.textContent = `
@@ -2037,9 +2377,15 @@ function openNewBookingModal(room) {
     newBookingState.selectedRoom = room;
     newBookingState.roomPrice = room.price || 3500000;
     
+    // Get room name based on language
+    const lang = state.currentLanguage;
+    const roomName = room.name && typeof room.name === 'object' 
+        ? room.name[lang] || room.name.vi 
+        : room.name || room.title || '-';
+    
     // Update summary info
-    document.getElementById('summaryRoomName').textContent = room.name || room.title;
-    document.getElementById('summaryRoomType').textContent = room.type || 'Phòng Deluxe King';
+    document.getElementById('summaryRoomName').textContent = roomName;
+    document.getElementById('summaryRoomType').textContent = roomName;
     
     // Reset form
     newBookingState.guestCount = 2;
@@ -2188,6 +2534,8 @@ function showBookingSuccessModal(bookingData) {
     
     // Update voucher details
     const room = bookingData.room;
+    const lang = state.currentLanguage;
+    
     document.getElementById('voucherHotelImg').src = room.image || room.panorama || '';
     document.getElementById('voucherHotelName').textContent = 'Link Hotel Nha Trang';
     document.getElementById('voucherLocation').textContent = '123 Trần Phú, Nha Trang, Khánh Hòa';
@@ -2196,7 +2544,13 @@ function showBookingSuccessModal(bookingData) {
     document.getElementById('voucherCheckout').textContent = formatDate(bookingData.checkOut);
     document.getElementById('voucherNights').textContent = `${bookingData.nights} đêm`;
     document.getElementById('voucherGuests').textContent = `${bookingData.guests} người`;
-    document.getElementById('voucherRoomType').textContent = room.name || room.title;
+    
+    // Fix: Get room name based on language
+    const roomName = room.name && typeof room.name === 'object' 
+        ? room.name[lang] || room.name.vi 
+        : room.name || room.title || '-';
+    document.getElementById('voucherRoomType').textContent = roomName;
+    
     document.getElementById('voucherCustomerName').textContent = bookingData.fullName;
     
     // Payment details

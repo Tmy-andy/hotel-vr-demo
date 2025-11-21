@@ -290,5 +290,101 @@
         "en": "Free cancellation before 48 hours. Cancellation within 48 hours will be charged for 1 night. No refund for no-shows."
       }
     }
+  ],
+
+  "restaurants": [
+    {
+      "id": "restaurant-001",
+      "name": {
+        "vi": "Nhà Hàng Maris",
+        "en": "Maris Restaurant"
+      },
+      "description": {
+        "vi": "Nằm tại tầng 2 của khách sạn, nhà hàng Maris mang đến những trải nghiệm ẩm thực châu Á sang trọng cùng thực đơn vô cùng đặc sắc và ấn tượng. Đây sẽ là lựa chọn hoàn hảo để thưởng thức những món ngon cùng như giá trị dinh dưỡng mà chúng tôi muốn gởi đến quý khách.",
+        "en": "Located on the 2nd floor of the hotel, Maris Restaurant offers luxurious Asian culinary experiences with an exceptional and impressive menu. This will be the perfect choice to enjoy delicious dishes as well as the nutritional value we want to deliver to you."
+      },
+      "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+      "panoramaUrl": "https://pannellum.org/images/bma-0.jpg",
+      "location": {
+        "vi": "Tầng 2",
+        "en": "2nd Floor"
+      },
+      "cuisine": {
+        "vi": "Ẩm thực châu Á",
+        "en": "Asian Cuisine"
+      },
+      "capacity": 100,
+      "openingHours": {
+        "vi": "Buffet sáng: từ 6 giờ sáng – 9h30 giờ sáng",
+        "en": "Breakfast Buffet: from 6:00 AM – 9:30 AM"
+      },
+      "services": {
+        "vi": "Bữa sáng và gọi món cho Bữa trưa + bữa tối",
+        "en": "Breakfast and à la carte for Lunch + Dinner"
+      },
+      "amenities": ["breakfast-buffet", "lunch-dinner", "asian-cuisine", "elegant-space"]
+    },
+    {
+      "id": "restaurant-002",
+      "name": {
+        "vi": "Rooftop Bar",
+        "en": "Rooftop Bar"
+      },
+      "description": {
+        "vi": "Tọa lạc tại tầng 21 của khách sạn, Pool Bar với tầm nhìn bao quát xung quanh thành phố biển xinh đẹp. Không gian sang trọng và hiện đại, đây là nơi lý tưởng để thưởng thức cocktail và ngắm hoàng hôn tuyệt đẹp.",
+        "en": "Located on the 21st floor of the hotel, Pool Bar with panoramic views of the beautiful coastal city. Elegant and modern space, this is the ideal place to enjoy cocktails and watch the stunning sunset."
+      },
+      "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800",
+      "panoramaUrl": "https://pannellum.org/images/alma.jpg",
+      "location": {
+        "vi": "Tầng 21",
+        "en": "21st Floor"
+      },
+      "cuisine": {
+        "vi": "Bar & Cocktails",
+        "en": "Bar & Cocktails"
+      },
+      "capacity": 80,
+      "openingHours": {
+        "vi": "17:00 - 23:00 hàng ngày",
+        "en": "5:00 PM - 11:00 PM daily"
+      },
+      "services": {
+        "vi": "Cocktails, Rượu vang, Đồ ăn nhẹ",
+        "en": "Cocktails, Wine, Light snacks"
+      },
+      "amenities": ["rooftop-view", "pool-bar", "cocktails", "sunset-view"]
+    },
+    {
+      "id": "restaurant-003",
+      "name": {
+        "vi": "Lobby Lounge",
+        "en": "Lobby Lounge"
+      },
+      "description": {
+        "vi": "Không gian thư giãn tại sảnh chính với đầy đủ đồ uống và bánh ngọt. Nơi hoàn hảo để gặp gỡ bạn bè hoặc làm việc trong không gian sang trọng và yên tĩnh.",
+        "en": "Relaxing space in the main lobby with full beverages and pastries. The perfect place to meet friends or work in an elegant and peaceful environment."
+      },
+      "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+      "panoramaUrl": "https://pannellum.org/images/bma-1.jpg",
+      "location": {
+        "vi": "Tầng trệt",
+        "en": "Ground Floor"
+      },
+      "cuisine": {
+        "vi": "Cafe & Bánh ngọt",
+        "en": "Cafe & Pastries"
+      },
+      "capacity": 50,
+      "openingHours": {
+        "vi": "7:00 - 22:00 hàng ngày",
+        "en": "7:00 AM - 10:00 PM daily"
+      },
+      "services": {
+        "vi": "Cà phê, Trà, Bánh ngọt, Đồ uống nhẹ",
+        "en": "Coffee, Tea, Pastries, Light beverages"
+      },
+      "amenities": ["cafe", "pastries", "wifi", "meeting-space"]
+    }
   ]
 }

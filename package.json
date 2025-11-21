@@ -56,5 +56,8 @@
   "bugs": {
     "url": "https://github.com/yourusername/vr360-phanthiet/issues"
   },
-  "homepage": "https://dulichphanthiet.vt360.vn"
+  "homepage": "https://dulichphanthiet.vt360.vn",
+  "dependencies": {
+    "lucide-react": "^0.554.0"
+  }
 }
