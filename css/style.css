@@ -4710,18 +4710,9 @@ body.ui-hidden .toggle-buttons-btn {
     }
 }
 
-/* ===== MOBILE PORTRAIT - KEEP SIDEBAR ===== */
-@media (max-width: 600px) and (orientation: portrait) {
-    /* Mobile portrait - always keep sidebar visible */
-    .content-panel {
-        width: calc(100% - 70px);
-        left: 70px;
-    }
-}
-
-/* ===== LANDSCAPE CONTENT PANEL ===== */
-@media (max-height: 600px) and (orientation: landscape) {
-    /* ONLY Mobile landscape - full screen */
+/* ===== MOBILE FULL WIDTH (LANDSCAPE & PORTRAIT) ===== */
+@media (max-width: 600px) {
+    /* Mobile landscape & portrait - full screen */
     .content-panel {
         width: 100%;
         left: 0;
