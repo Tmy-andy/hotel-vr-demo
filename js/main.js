@@ -315,6 +315,9 @@ function handleNavClick(page) {
         item => item.dataset.page === page
     );
     
+    // Hide VR title overlay when switching pages
+    hideVRTitleOverlay();
+    
     // Đóng room-info-panel nếu đang mở (không tự động mở lại content panel)
     if (elements.roomInfoPanel.classList.contains('active')) {
         elements.roomInfoPanel.classList.remove('active');
@@ -350,7 +353,7 @@ function loadPage(page) {
     
     // Show/hide search based on page
     if (elements.searchSection) {
-        elements.searchSection.style.display = (page === 'rooms' || page === 'dining') ? 'block' : 'none';
+        elements.searchSection.style.display = (page === 'rooms' || page === 'dining' || page === 'facilities') ? 'block' : 'none';
     }
     
     // Add/remove trang-duc class for introduction page
@@ -909,128 +912,162 @@ function showNotification(message, type = 'success') {
 // ===== Render Facilities =====
 function renderFacilities() {
     const lang = state.currentLanguage;
-    const facilities = state.hotelData.facilities;
+    const facilities = state.hotelData.facilities || [];
     
     const html = `
-        <div class="facilities-page-content">
-            <!-- Hero Section -->
-            <section class="facilities-hero">
-                <div class="facilities-hero-overlay"></div>
-                <div class="facilities-hero-text">
-                    <h1>${lang === 'vi' ? 'TIỆN NGHI & DỊCH VỤ' : 'FACILITIES & SERVICES'}</h1>
-                    <p>${lang === 'vi' ? 'Trải nghiệm các tiện nghi đẳng cấp 5 sao cho kỳ nghỉ hoàn hảo' : 'Experience world-class 5-star amenities for a perfect stay'}</p>
-                </div>
-            </section>
-
-            <!-- Main Facilities Section -->
-            <section class="facilities-main-section">
-                <div class="facilities-intro">
-                    <h2 class="facilities-section-title">${lang === 'vi' ? 'Tận hưởng trọn vẹn' : 'Enjoy the Full Experience'}</h2>
-                    <p class="facilities-intro-text">
-                        ${lang === 'vi' 
-                            ? 'Link Hotel Nha Trang mang đến đầy đủ tiện nghi cao cấp và dịch vụ chuyên nghiệp, đảm bảo mọi khoảnh khắc lưu trú của bạn đều là những trải nghiệm đáng nhớ.' 
-                            : 'Link Hotel Nha Trang offers premium amenities and professional services, ensuring every moment of your stay is a memorable experience.'}
-                    </p>
-                </div>
-
-                <!-- Facilities Grid with Images -->
-                <div class="facilities-showcase">
-                    ${facilities.map((facility, index) => {
-                        const images = [
-                            'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800',
-                            'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800',
-                            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800',
-                            'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800',
-                            'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800',
-                            'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?w=800'
-                        ];
-                        const isEven = index % 2 === 0;
-                        
-                        return `
-                        <div class="facility-showcase-item ${isEven ? 'reverse' : ''}">
-                            <div class="facility-showcase-image">
-                                <img src="${images[index] || images[0]}" alt="${facility.name[lang]}">
-                                <div class="facility-image-overlay"></div>
-                            </div>
-                            <div class="facility-showcase-content">
-                                <div class="facility-icon-large">
-                                    <i class="fas ${facility.icon}"></i>
-                                </div>
-                                <h3 class="facility-showcase-title">${facility.name[lang]}</h3>
-                                <p class="facility-showcase-desc">${facility.description[lang]}</p>
-                                <div class="facility-features">
-                                    <span class="facility-feature">
-                                        <i class="fas fa-check-circle"></i>
-                                        ${lang === 'vi' ? 'Mở cửa 24/7' : 'Open 24/7'}
-                                    </span>
-                                    <span class="facility-feature">
-                                        <i class="fas fa-check-circle"></i>
-                                        ${lang === 'vi' ? 'Miễn phí' : 'Free Access'}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        `;
-                    }).join('')}
-                </div>
-            </section>
-
-            <!-- Additional Services Section -->
-            <section class="additional-services">
-                <h2 class="facilities-section-title center">${lang === 'vi' ? 'Dịch vụ bổ sung' : 'Additional Services'}</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-concierge-bell"></i>
-                        <h4>${lang === 'vi' ? 'Dịch vụ phòng' : 'Room Service'}</h4>
-                        <p>${lang === 'vi' ? 'Phục vụ 24/7' : 'Available 24/7'}</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-car"></i>
-                        <h4>${lang === 'vi' ? 'Đưa đón sân bay' : 'Airport Transfer'}</h4>
-                        <p>${lang === 'vi' ? 'Xe sang trọng' : 'Luxury vehicles'}</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-tshirt"></i>
-                        <h4>${lang === 'vi' ? 'Giặt ủi' : 'Laundry'}</h4>
-                        <p>${lang === 'vi' ? 'Dịch vụ cao cấp' : 'Premium service'}</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-baby"></i>
-                        <h4>${lang === 'vi' ? 'Dịch vụ trông trẻ' : 'Babysitting'}</h4>
-                        <p>${lang === 'vi' ? 'Chuyên nghiệp' : 'Professional care'}</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-briefcase"></i>
-                        <h4>${lang === 'vi' ? 'Trung tâm kinh doanh' : 'Business Center'}</h4>
-                        <p>${lang === 'vi' ? 'Tiện nghi đầy đủ' : 'Fully equipped'}</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-wifi"></i>
-                        <h4>WiFi</h4>
-                        <p>${lang === 'vi' ? 'Tốc độ cao, miễn phí' : 'High-speed, free'}</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CTA Section -->
-            <section class="facilities-cta">
-                <div class="facilities-cta-overlay"></div>
-                <div class="facilities-cta-content">
-                    <h2>${lang === 'vi' ? 'Sẵn sàng trải nghiệm?' : 'Ready to Experience?'}</h2>
-                    <p>${lang === 'vi' ? 'Đặt phòng ngay hôm nay để tận hưởng những tiện nghi tuyệt vời của chúng tôi' : 'Book now to enjoy our amazing facilities'}</p>
-                    <button class="facilities-cta-button">
-                        <i class="fas fa-calendar-check"></i>
-                        ${lang === 'vi' ? 'Đặt phòng ngay' : 'Book Now'}
-                    </button>
-                </div>
-            </section>
+        <div class="content-grid">
+            ${facilities.map(facility => createFacilityCard(facility, lang)).join('')}
         </div>
     `;
     
     elements.panelContent.innerHTML = html;
     
-    // Attach event listeners for booking buttons
-    attachBookingButtonListeners();
+    // Attach event listeners for facility cards
+    attachFacilityCardListeners();
+}
+
+// ===== Create Facility Card =====
+function createFacilityCard(facility, lang) {
+    return `
+        <div class="content-card" data-facility-id="${facility.id}">
+            <div class="card-image">
+                ${facility.image ? 
+                    `<img src="${facility.image}" alt="${facility.name[lang]}" loading="lazy" 
+                        onerror="this.parentElement.innerHTML='<span class=\\'card-placeholder\\'><i class=\\'fas fa-building\\'></i></span>'">` 
+                    : `<span class="card-placeholder"><i class="fas fa-building"></i></span>`
+                }
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">${facility.name[lang]}</h3>
+                <p class="card-description">${facility.description[lang]}</p>
+                
+                <div class="card-meta">
+                    <div class="card-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${facility.location[lang]}</span>
+                    </div>
+                    ${facility.services && facility.services.length > 0 ? `
+                    <div class="card-meta-item">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>${facility.services.length} ${lang === 'vi' ? 'dịch vụ' : 'services'}</span>
+                    </div>
+                    ` : ''}
+                    <div class="card-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>${facility.openingHours[lang]}</span>
+                    </div>
+                </div>
+                
+                <div class="card-footer dining-footer">
+                    <div class="dining-hours">
+                        <i class="fas fa-clock"></i>
+                        <small>${facility.openingHours[lang]}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// ===== Attach Facility Card Listeners =====
+function attachFacilityCardListeners() {
+    const cards = document.querySelectorAll('.content-card[data-facility-id]');
+    cards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const facilityId = card.dataset.facilityId;
+            handleFacilityClick(facilityId);
+        });
+    });
+}
+
+// ===== Handle Facility Click =====
+function handleFacilityClick(facilityId) {
+    const facility = state.hotelData.facilities.find(f => f.id === facilityId);
+    if (!facility) return;
+    
+    state.selectedRoom = facility; // Reuse selectedRoom state for facility
+    
+    console.log('🏊 Facility clicked:', facility.name.vi);
+    
+    // Show VR title overlay
+    const lang = state.currentLanguage;
+    const facilityName = facility.name && typeof facility.name === 'object' 
+        ? facility.name[lang] || facility.name.vi 
+        : facility.name || '-';
+    showVRTitleOverlay(facilityName);
+    
+    // 1. Load VR panorama FIRST
+    if (facility.panoramaUrl) {
+        loadVRPanorama(facility);
+    }
+    
+    // 2. Close content panel - FORCE
+    console.log('🚪 Closing content panel...');
+    closeContentPanel();
+    
+    // 3. Show facility info panel with delay
+    setTimeout(() => {
+        console.log('📱 Opening facility info panel...');
+        renderFacilityInfo(facility);
+        openRoomInfoPanel();
+    }, 150);
+}
+
+// ===== Render Facility Info =====
+function renderFacilityInfo(facility) {
+    const lang = state.currentLanguage;
+    
+    elements.roomInfoTitle.textContent = facility.name[lang];
+    
+    const html = `
+        <div class="room-detail-section">
+            <h4><i class="fas fa-info-circle"></i> ${lang === 'vi' ? 'Giới thiệu' : 'Introduction'}</h4>
+            <p>${facility.description[lang]}</p>
+            
+            <div class="room-specs">
+                <div class="spec-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${facility.location[lang]}</span>
+                </div>
+                ${facility.services && facility.services.length > 0 ? `
+                <div class="spec-item">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>${facility.services.length} ${lang === 'vi' ? 'dịch vụ' : 'services'}</span>
+                </div>
+                ` : ''}
+                <div class="spec-item">
+                    <i class="fas fa-clock"></i>
+                    <span>${facility.openingHours[lang]}</span>
+                </div>
+            </div>
+        </div>
+        
+        ${facility.services && facility.services.length > 0 ? `
+        <div class="room-detail-section">
+            <h4><i class="fas fa-concierge-bell"></i> ${lang === 'vi' ? 'Dịch vụ' : 'Services'}</h4>
+            <ul class="amenities-list">
+                ${facility.services.map(service => `
+                    <li><i class="fas fa-check"></i> ${service[lang] || service.vi}</li>
+                `).join('')}
+            </ul>
+        </div>
+        ` : ''}
+        
+        ${facility.pricing ? `
+        <div class="room-detail-section">
+            <h4><i class="fas fa-tags"></i> ${lang === 'vi' ? 'Giá & Gói dịch vụ' : 'Pricing & Packages'}</h4>
+            <ul class="amenities-list">
+                ${Object.entries(facility.pricing).map(([key, value]) => `
+                    <li><i class="fas fa-money-bill-wave"></i> ${value[lang] || value.vi}</li>
+                `).join('')}
+            </ul>
+        </div>
+        ` : ''}
+    `;
+    
+    elements.roomInfoContent.innerHTML = html;
+    addRoomInfoStyles();
 }
 
 // ===== Render Policies =====
@@ -1518,6 +1555,28 @@ function handleSearch(e) {
         });
         
         renderDining(filteredRestaurants);
+    } else if (state.currentPage === 'facilities') {
+        const allFacilities = state.hotelData.facilities;
+        
+        if (!query) {
+            renderFacilities(allFacilities);
+            return;
+        }
+        
+        const filteredFacilities = allFacilities.filter(facility => {
+            const nameVi = facility.name.vi.toLowerCase();
+            const nameEn = facility.name.en.toLowerCase();
+            const descVi = facility.description.vi.toLowerCase();
+            const descEn = facility.description.en.toLowerCase();
+            const locationVi = facility.location.vi.toLowerCase();
+            const locationEn = facility.location.en.toLowerCase();
+            
+            return nameVi.includes(query) || nameEn.includes(query) ||
+                   descVi.includes(query) || descEn.includes(query) ||
+                   locationVi.includes(query) || locationEn.includes(query);
+        });
+        
+        renderFacilities(filteredFacilities);
     }
 }
 
@@ -1743,7 +1802,6 @@ function openContentPanel() {
 
 function closeContentPanel() {
     elements.contentPanel.classList.remove('active');
-    hideVRTitleOverlay();
     console.log('✓ Content panel closed');
 }
 

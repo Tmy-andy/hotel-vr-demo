@@ -193,17 +193,46 @@
       "icon": "fa-person-swimming",
       "name": { "vi": "Hồ Bơi Vô Cực", "en": "Infinity Pool" },
       "description": {
-        "vi": "Hồ bơi ngoài trời với view biển tuyệt đẹp, mở cửa từ 6:00 - 22:00",
-        "en": "Outdoor pool with stunning sea views, open from 6:00 AM - 10:00 PM"
+        "vi": "Hồ bơi ngoài trời với view biển tuyệt đẹp, thiết kế hiện đại sang trọng. Nước được xử lý bằng công nghệ tiên tiến, đảm bảo an toàn tuyệt đối.",
+        "en": "Outdoor infinity pool with stunning sea views and modern luxury design. Water treated with advanced technology ensuring absolute safety."
+      },
+      "image": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800",
+      "panoramaUrl": "https://pannellum.org/images/cerro-toco-0.jpg",
+      "location": { "vi": "Tầng 5", "en": "5th Floor" },
+      "openingHours": { "vi": "06:00 - 22:00", "en": "06:00 AM - 10:00 PM" },
+      "services": [
+        { "vi": "Ghế tắm nắng", "en": "Sun loungers" },
+        { "vi": "Khăn tắm miễn phí", "en": "Free towels" },
+        { "vi": "Pool bar", "en": "Pool bar" },
+        { "vi": "Dịch vụ phục vụ đồ uống", "en": "Beverage service" }
+      ],
+      "pricing": {
+        "entry": { "vi": "Miễn phí cho khách lưu trú", "en": "Free for hotel guests" },
+        "dayPass": { "vi": "500.000 VNĐ/người (khách ngoài)", "en": "500,000 VND/person (external guests)" }
       }
     },
     {
       "id": "facility-002",
       "icon": "fa-spa",
-      "name": { "vi": "Spa & Massage", "en": "Spa & Massage" },
+      "name": { "vi": "Spa & Wellness", "en": "Spa & Wellness" },
       "description": {
-        "vi": "Dịch vụ spa cao cấp với các liệu pháp truyền thống và hiện đại",
-        "en": "Premium spa services with traditional and modern therapies"
+        "vi": "Spa cao cấp với các liệu pháp massage truyền thống và hiện đại. Đội ngũ chuyên viên giàu kinh nghiệm mang đến trải nghiệm thư giãn tuyệt vời.",
+        "en": "Premium spa featuring traditional and modern massage therapies. Experienced therapists provide an exceptional relaxation experience."
+      },
+      "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800",
+      "panoramaUrl": "https://pannellum.org/images/jfk.jpg",
+      "location": { "vi": "Tầng 2", "en": "2nd Floor" },
+      "openingHours": { "vi": "09:00 - 21:00", "en": "09:00 AM - 09:00 PM" },
+      "services": [
+        { "vi": "Massage body", "en": "Body massage" },
+        { "vi": "Massage đá nóng", "en": "Hot stone massage" },
+        { "vi": "Chăm sóc da mặt", "en": "Facial treatment" },
+        { "vi": "Liệu pháp thư giãn", "en": "Relaxation therapy" }
+      ],
+      "pricing": {
+        "massage60": { "vi": "800.000 VNĐ/60 phút", "en": "800,000 VND/60 minutes" },
+        "massage90": { "vi": "1.200.000 VNĐ/90 phút", "en": "1,200,000 VND/90 minutes" },
+        "facial": { "vi": "1.500.000 VNĐ/buổi", "en": "1,500,000 VND/session" }
       }
     },
     {
@@ -211,35 +240,89 @@
       "icon": "fa-dumbbell",
       "name": { "vi": "Phòng Gym", "en": "Fitness Center" },
       "description": {
-        "vi": "Phòng tập gym hiện đại với thiết bị cao cấp, mở cửa 24/7",
-        "en": "Modern fitness center with premium equipment, open 24/7"
+        "vi": "Phòng tập gym hiện đại với thiết bị cao cấp từ các thương hiệu hàng đầu thế giới. Không gian rộng rãi, thoáng mát với view nhìn ra biển.",
+        "en": "Modern fitness center with premium equipment from world-leading brands. Spacious, airy environment with ocean views."
+      },
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800",
+      "panoramaUrl": "https://pannellum.org/images/alma.jpg",
+      "location": { "vi": "Tầng 3", "en": "3rd Floor" },
+      "openingHours": { "vi": "24/7", "en": "24/7" },
+      "services": [
+        { "vi": "Máy chạy bộ", "en": "Treadmills" },
+        { "vi": "Xe đạp tập", "en": "Exercise bikes" },
+        { "vi": "Tạ và dụng cụ", "en": "Weights & equipment" },
+        { "vi": "Huấn luyện viên cá nhân", "en": "Personal trainer" }
+      ],
+      "pricing": {
+        "entry": { "vi": "Miễn phí cho khách lưu trú", "en": "Free for hotel guests" },
+        "trainer": { "vi": "500.000 VNĐ/buổi", "en": "500,000 VND/session" }
       }
     },
     {
       "id": "facility-004",
-      "icon": "fa-utensils",
-      "name": { "vi": "Nhà Hàng", "en": "Restaurant" },
+      "icon": "fa-children",
+      "name": { "vi": "Khu Vui Chơi Trẻ Em", "en": "Kids Club" },
       "description": {
-        "vi": "3 nhà hàng phục vụ ẩm thực Á - Âu và đặc sản địa phương",
-        "en": "3 restaurants serving Asian-European cuisine and local specialties"
+        "vi": "Khu vui chơi an toàn, đầy màu sắc dành cho trẻ em với nhiều hoạt động giải trí, giáo dục. Có nhân viên trông nom chuyên nghiệp.",
+        "en": "Safe, colorful play area for children with various entertainment and educational activities. Professional childcare staff available."
+      },
+      "image": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800",
+      "panoramaUrl": "https://pannellum.org/images/bma-0.jpg",
+      "location": { "vi": "Tầng 4", "en": "4th Floor" },
+      "openingHours": { "vi": "08:00 - 20:00", "en": "08:00 AM - 08:00 PM" },
+      "services": [
+        { "vi": "Khu vui chơi trong nhà", "en": "Indoor playground" },
+        { "vi": "Hoạt động giáo dục", "en": "Educational activities" },
+        { "vi": "Vẽ & thủ công", "en": "Arts & crafts" },
+        { "vi": "Game giải trí", "en": "Entertainment games" }
+      ],
+      "pricing": {
+        "entry": { "vi": "Miễn phí cho trẻ em khách lưu trú", "en": "Free for children of hotel guests" }
       }
     },
     {
       "id": "facility-005",
-      "icon": "fa-martini-glass",
-      "name": { "vi": "Sky Bar", "en": "Sky Bar" },
+      "icon": "fa-users-rectangle",
+      "name": { "vi": "Phòng Họp & Sự Kiện", "en": "Meeting & Events" },
       "description": {
-        "vi": "Bar trên tầng thượng với view 360 độ và các loại cocktail đặc biệt",
-        "en": "Rooftop bar with 360-degree views and signature cocktails"
+        "vi": "Hệ thống phòng họp hiện đại với trang thiết bị công nghệ cao, phù hợp cho hội nghị, hội thảo, tiệc cưới và các sự kiện đặc biệt.",
+        "en": "Modern meeting rooms with high-tech equipment, suitable for conferences, seminars, weddings and special events."
+      },
+      "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
+      "panoramaUrl": "https://pannellum.org/images/pano-5.jpg",
+      "location": { "vi": "Tầng 6", "en": "6th Floor" },
+      "openingHours": { "vi": "Theo yêu cầu", "en": "By appointment" },
+      "services": [
+        { "vi": "Phòng họp 50-200 người", "en": "Meeting rooms 50-200 pax" },
+        { "vi": "Thiết bị AV hiện đại", "en": "Modern AV equipment" },
+        { "vi": "Dịch vụ catering", "en": "Catering service" },
+        { "vi": "Hỗ trợ tổ chức sự kiện", "en": "Event organization support" }
+      ],
+      "pricing": {
+        "halfDay": { "vi": "Từ 5.000.000 VNĐ/nửa ngày", "en": "From 5,000,000 VND/half day" },
+        "fullDay": { "vi": "Từ 8.000.000 VNĐ/ngày", "en": "From 8,000,000 VND/full day" }
       }
     },
     {
       "id": "facility-006",
-      "icon": "fa-users-rectangle",
-      "name": { "vi": "Phòng Họp", "en": "Meeting Rooms" },
+      "icon": "fa-gamepad",
+      "name": { "vi": "Game Room", "en": "Game Room" },
       "description": {
-        "vi": "Phòng họp và hội nghị với thiết bị hiện đại, sức chứa đến 200 người",
-        "en": "Meeting and conference rooms with modern equipment, capacity up to 200 people"
+        "vi": "Phòng giải trí với bàn bi-a, bóng bàn, game điện tử và nhiều trò chơi thú vị. Không gian lý tưởng để thư giãn và giao lưu.",
+        "en": "Entertainment room with billiards, table tennis, video games and various fun activities. Ideal space for relaxation and socializing."
+      },
+      "image": "https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?w=800",
+      "panoramaUrl": "https://pannellum.org/images/cerro-toco-1.jpg",
+      "location": { "vi": "Tầng 4", "en": "4th Floor" },
+      "openingHours": { "vi": "10:00 - 23:00", "en": "10:00 AM - 11:00 PM" },
+      "services": [
+        { "vi": "Bàn bi-a", "en": "Billiards table" },
+        { "vi": "Bóng bàn", "en": "Table tennis" },
+        { "vi": "PlayStation & Xbox", "en": "PlayStation & Xbox" },
+        { "vi": "Trò chơi board game", "en": "Board games" }
+      ],
+      "pricing": {
+        "entry": { "vi": "Miễn phí cho khách lưu trú", "en": "Free for hotel guests" }
       }
     }
   ],
