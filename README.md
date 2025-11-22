@@ -1,6 +1,6 @@
 # 🏨 Link Hotel VR360 - Virtual Hotel Experience
 
-Ứng dụng web VR360 hiện đại cho khách sạn Link Hotel Vũng Tàu, cho phép khách hàng trải nghiệm khách sạn với công nghệ xem 360 độ, đặt phòng trực tuyến và sử dụng voucher ưu đãi.
+Ứng dụng web VR360 hiện đại cho khách sạn Link Hotel Vũng Tàu, cho phép khách hàng trải nghiệm khách sạn với công nghệ xem 360 độ, đặt phòng trực tuyến với hệ thống giỏ hàng và sử dụng voucher ưu đãi.
 
 ## ✨ Tính Năng Chính
 
@@ -9,6 +9,7 @@
 - **Điều hướng VR** mượt mà, zoom in/out, xoay tự do
 - **Fullscreen mode** để trải nghiệm tốt nhất
 - **Toggle controls** ẩn/hiện các nút điều khiển
+- **VR Overview** - Nút xem tổng quan khách sạn từ action buttons
 
 ### 🏠 Giới Thiệu Khách Sạn
 - Hero banner ấn tượng với thông tin khách sạn
@@ -23,7 +24,17 @@
 - Thông tin chi tiết: giá, diện tích, sức chứa
 - Filter và search phòng theo tags
 - Click để xem VR360 và thông tin chi tiết
-- Nút "Đặt phòng" trực tiếp trên mỗi card
+- **Nút "Đặt phòng"** mở modal cart để chọn nhiều phòng
+
+### 🛒 Hệ Thống Giỏ Hàng (Cart Booking)
+- **Đặt nhiều phòng** cùng lúc với số lượng khác nhau
+- **Giỏ hàng scrollable** hiển thị danh sách phòng đã chọn
+- **Thêm/Xóa/Sửa** phòng trong giỏ hàng
+- **Tính toán tự động** tổng tiền theo đêm nghỉ
+- **Nhập thông tin đặt phòng**: Tên, Email, SĐT
+- **Áp dụng voucher** giảm giá tự động
+- **Responsive design**: Single column trên mobile
+- **Price breakdown** chi tiết (giá phòng x đêm, phí dịch vụ, giảm giá)
 
 ### 🎫 Ưu Đãi & Voucher
 - Hiển thị các chương trình khuyến mãi
@@ -37,32 +48,36 @@
 - Icons và mô tả chi tiết từng tiện ích
 - Bao gồm: Hồ bơi, Gym, Spa, Nhà hàng, Bar, v.v.
 
-### 📋 Chính Sách
+### 🍽️ Ẩm Thực
+- Giới thiệu các nhà hàng và quầy bar
+- Menu và đặc sản
+- Giờ phục vụ
+
+### �️ Thư Viện Ảnh & Video
+- **Gallery panel** hiển thị ảnh và video khách sạn
+- **2 tabs**: Video và Hình ảnh
+- **Grid layout responsive** (1-4 cột tùy màn hình)
+- **Video cards** với play button hover effect
+- **Glassmorphism design** với Tailwind CSS
+- **Aspect ratio 3:4** cho cards
+
+### �📋 Chính Sách & Nội Quy
 - Grid layout 3 cột responsive
-- 6 chính sách chính: Check-in/out, Hủy phòng, Trẻ em, Vật nuôi, Hút thuốc, Quy định chung
+- Chính sách: Check-in/out, Hủy phòng, Trẻ em, Vật nuôi, Hút thuốc
+- Nội quy chi tiết cho khách lưu trú
 - Icon và mô tả chi tiết
-- Thông báo lưu ý quan trọng
 
 ### 📞 Liên Hệ
-- Form liên hệ với validation
+- **Form liên hệ responsive** cho mobile
 - Thông tin liên hệ: Địa chỉ, Phone, Email, Website
 - Giờ làm việc
 - Google Maps integration
 
-### 💳 Đặt Phòng
-- **Modal đặt phòng hiện đại** với 2 cột (form + summary)
-- **Calendar picker** chọn ngày check-in/out với date range
-- **Guest counter** tăng/giảm số lượng khách
-- **Nhập thông tin** khách hàng (tên, SĐT)
-- **Voucher input** với validation và áp dụng giảm giá tự động
-- **Price breakdown** chi tiết (giá phòng x đêm, phí dịch vụ, giảm giá)
-- **Phương thức thanh toán**: Cash hoặc VNPay
-
-### 💰 Thanh Toán
+### 💳 Thanh Toán
 - **QR Payment Modal** cho VNPay
 - Hiển thị QR code và thông tin đơn hàng
 - Countdown timer 14:59 phút
-- Auto-redirect sau 3 giây (demo)
+- Auto-redirect sau khi thanh toán
 
 ### ✅ Xác Nhận Đặt Phòng
 - **Booking Success Modal** với voucher chi tiết
@@ -71,14 +86,22 @@
 - QR code check-in
 - Nút "Về trang chủ"
 
+### 🎨 UI/UX Features
+- **Sidebar tooltips** với glassmorphism effect (15% opacity, blur 20px)
+- **Action buttons**: Toggle UI, Fullscreen, Overview, Gallery
+- **Content panel** mở rộng với animation smooth
+- **Room info panel** hiển thị chi tiết phòng
+- **Glassmorphism design** xuyên suốt UI
+- **Responsive design** tối ưu cho mobile
+
 ### 🌐 Đa Ngôn Ngữ
 - Chuyển đổi Tiếng Việt ↔️ English
 - Tất cả nội dung được dịch
 - Toggle language button
 
 ### 🔍 Tìm Kiếm
-- Search bar với autocomplete
-- Tìm kiếm phòng theo tên
+- Search bar có thể ẩn/hiện
+- Tìm kiếm theo tên phòng
 - Hiển thị kết quả real-time
 
 ## 📁 Cấu Trúc Project
@@ -89,49 +112,77 @@ hotel-app/
 ├── index.html                 # File HTML chính
 │
 ├── css/
-│   ├── style.css             # CSS chính (4400+ lines)
-│   └── toggle-btn.css        # CSS cho language toggle
+│   ├── style-new.css         # CSS modular (imports)
+│   ├── base.css              # Base styles & variables
+│   ├── layout.css            # Sidebar, panels, layout
+│   ├── components.css        # Components (cards, buttons, gallery)
+│   ├── room-info.css         # Room info panel styles
+│   ├── pages.css             # Page-specific styles
+│   ├── responsive.css        # Media queries
+│   ├── toggle-btn.css        # Language toggle button
+│   └── booking-cart.css      # Cart booking system
 │
 ├── js/
-│   ├── main.js               # Logic chính (2200+ lines)
-│   ├── api-service.js        # API service & voucher validation
-│   ├── config.js             # Configuration
-│   └── hotel-app.js          # App initialization
+│   ├── main-new.js           # Entry point (ES6 modules)
+│   ├── state.js              # Global state management
+│   ├── vr-viewer.js          # VR viewer logic
+│   ├── navigation.js         # Navigation & event handlers
+│   ├── rooms.js              # Rooms page logic
+│   ├── pages.js              # Static pages (intro, vouchers, etc)
+│   ├── facilities.js         # Facilities page
+│   ├── dining.js             # Dining page
+│   ├── utils.js              # Utility functions
+│   ├── booking-cart.js       # Cart booking system (729 lines)
+│   ├── gallery.js            # Gallery module
+│   ├── api-service.js        # API service (voucher validation)
+│   └── config.js             # Configuration
 │
 ├── data/
 │   ├── hotels.json           # Dữ liệu khách sạn, phòng, tiện ích
-│   ├── tags.json             # Tags cho filter
 │   └── vouchers.json         # Dữ liệu voucher & promotions
 │
 ├── assets/
 │   ├── panoramas/            # Ảnh VR360
 │   └── icon/                 # Icons
 │
-└── trang mẫu/                # Reference designs
-    ├── dat-phong-khach-san.html
-    ├── QR-thanh-toan.html
-    ├── thanh-toan-thanh-cong.html
-    ├── chinh-sach.html
-    └── voucher.html
+├── sample-pages/             # Reference designs (Tailwind)
+│   ├── dat-phong-khach-san.html
+│   ├── QR-thanh-toan.html
+│   ├── thanh-toan-thanh-cong.html
+│   ├── chinh-sach.html
+│   ├── voucher.html
+│   └── thu-vien.html
+│
+└── replace_*.py              # Python scripts for global replacements
 ```
 
 ## 🛠️ Công Nghệ Sử Dụng
 
 ### Frontend
 - **HTML5** - Semantic markup
-- **CSS3** - Modern styling, Flexbox, Grid, Animations
-- **Vanilla JavaScript (ES6+)** - No framework, pure JS
+- **CSS3** - Modern styling, Flexbox, Grid, Animations, Glassmorphism
+- **Vanilla JavaScript (ES6+)** - Modules, async/await, modern syntax
+- **Tailwind CSS** - Utility-first CSS (used in gallery)
 
-### Libraries
-- **[Pannellum](https://pannellum.org/)** - VR360 viewer
-- **[Font Awesome](https://fontawesome.com/)** - Icons
-- **Google Fonts** - Typography
+### Libraries & Frameworks
+- **[Pannellum 2.5.6](https://pannellum.org/)** - VR360 viewer với hotspots
+- **[Font Awesome 6.6.0](https://fontawesome.com/)** - 2000+ icons
+- **[Tailwind CSS](https://tailwindcss.com/)** - CDN cho gallery components
+- **Google Fonts** - Typography (Plus Jakarta Sans)
+
+### Architecture
+- **ES6 Modules** - Modular JavaScript architecture
+- **CSS Modules** - Separated concerns (base, layout, components)
+- **State Management** - Centralized state object
+- **Event-driven** - Event delegation và custom events
 
 ### Design System
 - **Primary Color**: `#137fec` (Blue)
+- **Accent Color**: `#C0A47C` (Gold) 
 - **Background**: `#f8fafc`, `#f9fafb`
 - **Text**: `#0d141b`, `#6b7280`
-- **Border Radius**: 8px, 12px
+- **Glassmorphism**: `rgba(255,255,255,0.15)` + `blur(20px)`
+- **Border Radius**: 8px, 12px, 16px
 - **Font**: System fonts + Plus Jakarta Sans
 
 ## 🚀 Cách Sử Dụng
@@ -151,38 +202,52 @@ cd hotel-vr-demo
 ### 3. Hoặc Mở Trực Tiếp
 ```bash
 # Mở file index.html bằng trình duyệt
-# Recommended: Chrome, Firefox, Edge
+# Recommended: Chrome, Firefox, Edge (latest versions)
+```
+
+### 4. Python Scripts (Optional)
+```bash
+# Replace colors globally
+python replace_colors.py
+
+# Replace hotel name (Nha Trang → Vũng Tàu)
+python replace_hotel_name.py
 ```
 
 ## 📱 Responsive Design
 
-- **Desktop**: Full features, sidebar + content panel
-- **Tablet**: Optimized layout, touch-friendly
-- **Mobile**: Hamburger menu, optimized UI
+- **Desktop (1920px+)**: Full features, sidebar + dual panels
+- **Laptop (1366px)**: Optimized layout, full sidebar
+- **Tablet (768px)**: Touch-friendly, responsive grid
+- **Mobile (375px)**: Single column, hamburger menu, bottom navigation
 
 ## 🎨 Tùy Chỉnh
 
 ### Thay Đổi Màu Sắc
 ```css
-/* Trong file css/style.css */
+/* Trong file css/base.css */
 :root {
-    --primary: #137fec;
-    --primary-dark: #0d6edb;
+    --primary-color: #137fec;
+    --accent-color: #C0A47C;
+    --background-color: #f8fafc;
     /* ... các biến màu khác */
 }
 ```
 
 ### Thêm Phòng Mới
 ```json
-// Trong file data/hotels.json
+// Trong file data/hotels.json → rooms array
 {
     "id": "room-new",
-    "name": "Tên Phòng",
+    "name": {
+        "vi": "Phòng Mới",
+        "en": "New Room"
+    },
     "price": 3500000,
     "area": 45,
     "capacity": 2,
     "image": "url-image",
-    "panorama": "url-panorama-360",
+    "panoramaUrl": "url-panorama-360",
     "description": {...},
     "amenities": [...],
     "tags": [...]
@@ -191,15 +256,25 @@ cd hotel-vr-demo
 
 ### Thêm Voucher Mới
 ```json
-// Trong file data/vouchers.json
+// Trong file data/vouchers.json → vouchers array
 {
-    "id": "CODE123",
-    "code": "CODE123",
+    "id": "NEW2025",
+    "code": "NEW2025",
+    "title": {
+        "vi": "Ưu đãi mới",
+        "en": "New Offer"
+    },
     "discount": 20,
     "discountType": "percent",
     "minNights": 2,
     "active": true,
-    // ... các field khác
+    "expiryDays": 30,
+    "expiryHours": 12,
+    "expiryMinutes": 0,
+    "badge": {
+        "text": {"vi": "Giảm 20%", "en": "20% OFF"},
+        "color": "blue"
+    }
 }
 ```
 
@@ -207,6 +282,7 @@ cd hotel-vr-demo
 
 ### State Management
 ```javascript
+// Global state in state.js
 const state = {
     currentPage: 'rooms',
     currentLanguage: 'vi',
@@ -217,100 +293,173 @@ const state = {
 };
 ```
 
-### Booking Flow
+### Cart Booking Flow
 ```
-1. Click "Đặt phòng" → Open booking modal
-2. Select dates from calendar
-3. Enter guest info
-4. (Optional) Enter voucher code → Validate & apply discount
-5. Choose payment method
-6. Submit → Show QR (VNPay) or Success modal
+1. Click "Đặt phòng" → Open cart modal
+2. Add multiple rooms with quantity
+3. Select dates from calendar picker
+4. Enter customer info (Name, Email, Phone)
+5. (Optional) Enter voucher code → Validate & apply discount
+6. Review cart summary with price breakdown
+7. Choose payment method (Cash/VNPay)
+8. Submit → Show QR payment or Success modal
 ```
 
-### Voucher Validation
+### Voucher Validation Logic
 ```javascript
-// Kiểm tra:
-- Mã hợp lệ & active
-- Số đêm >= minNights
-- Tính discount (percent hoặc fixed)
-- Update price summary
+// In api-service.js
+1. Check voucher exists and is active
+2. Validate minimum nights requirement
+3. Calculate discount (percent or fixed)
+4. Apply to total price
+5. Update cart summary display
+```
+
+### Gallery System
+```javascript
+// In gallery.js
+- Data structure: videos[] & images[] with multilang titles
+- Tabs switching: videos ↔ images
+- Grid layout: Tailwind classes (responsive 1-4 columns)
+- Hover effects: Play button overlay for videos
 ```
 
 ## 📊 Dữ Liệu JSON
 
-### hotels.json
-- `hotelInfo`: Thông tin khách sạn
-- `rooms`: Danh sách phòng
-- `facilities`: Tiện ích
-- `policies`: Chính sách
-- `contact`: Thông tin liên hệ
+### hotels.json Structure
+```javascript
+{
+  "hotelInfo": {
+    "name": {"vi": "...", "en": "..."},
+    "description": {...},
+    "defaultPanorama": "url...",
+    "stats": {...}
+  },
+  "rooms": [
+    {
+      "id": "deluxe-room",
+      "name": {"vi": "...", "en": "..."},
+      "price": 2500000,
+      "panoramaUrl": "...",
+      "amenities": [...],
+      "tags": [...]
+    }
+  ],
+  "facilities": [...],
+  "dining": [...],
+  "policies": [...],
+  "rules": [...],
+  "contact": {...}
+}
+```
 
-### vouchers.json
-- `vouchers[]`: Mảng các voucher
-  - `code`: Mã voucher
-  - `discount`: Số tiền/% giảm
-  - `discountType`: "percent" | "fixed" | "gift"
-  - `minNights`: Số đêm tối thiểu
-  - `expiryDays/Hours/Minutes`: Thời gian còn lại
-  - `features[]`: Điều kiện áp dụng
+### vouchers.json Structure
+```javascript
+{
+  "vouchers": [
+    {
+      "id": "EARLYBOOK25",
+      "code": "EARLYBOOK25",
+      "title": {"vi": "...", "en": "..."},
+      "discount": 25,
+      "discountType": "percent",
+      "minNights": 3,
+      "active": true,
+      "expiryDays": 45,
+      "features": [
+        {"icon": "calendar", "text": {...}}
+      ],
+      "badge": {
+        "text": {"vi": "Giảm 25%", "en": "25% OFF"},
+        "color": "blue"
+      }
+    }
+  ]
+}
+```
 
 ## 🌟 Highlights
 
-- ✅ **No dependencies** - Pure vanilla JavaScript
-- ✅ **Mobile-first** - Responsive design
-- ✅ **Performance** - Optimized loading, lazy load images
-- ✅ **UX/UI** - Smooth animations, intuitive navigation
-- ✅ **Accessibility** - Semantic HTML, keyboard navigation
-- ✅ **Maintainable** - Clean code structure, separated concerns
+- ✅ **ES6+ Modules** - Modern JavaScript architecture
+- ✅ **No jQuery** - Pure vanilla JavaScript
+- ✅ **Mobile-first** - Responsive design from 375px to 4K
+- ✅ **Performance** - Optimized loading, modular CSS
+- ✅ **UX/UI** - Glassmorphism, smooth animations, intuitive navigation
+- ✅ **Accessibility** - Semantic HTML, ARIA labels, keyboard navigation
+- ✅ **Maintainable** - Separated concerns, modular structure
+- ✅ **Multi-language** - Complete i18n support (VI/EN)
 
-## 🐛 Known Issues
+## 🐛 Known Issues & Limitations
 
-- Calendar chỉ hiển thị 1 tháng hiện tại (có thể mở rộng)
-- VR360 cần internet để load panorama images
-- Payment integration chỉ là demo UI
+- ⚠️ Calendar picker chỉ hiển thị tháng hiện tại
+- ⚠️ VR360 panoramas cần internet connection
+- ⚠️ Payment integration là demo UI (no real transactions)
+- ⚠️ No backend - data stored in JSON files
+- ⚠️ Voucher validation chỉ là client-side
 
 ## 🚧 Future Enhancements
 
-- [ ] Backend integration (Node.js/PHP)
-- [ ] Real payment gateway (VNPay, Momo)
-- [ ] User authentication
-- [ ] Booking history
-- [ ] Email confirmation
-- [ ] Admin panel
-- [ ] More VR360 panoramas
-- [ ] Multi-month calendar picker
+### Backend & Integration
+- [ ] Node.js/Express backend API
+- [ ] Database integration (MongoDB/PostgreSQL)
+- [ ] Real payment gateway (VNPay API, Momo)
+- [ ] Email notification system
+- [ ] SMS confirmation (OTP)
+
+### Features
+- [ ] User authentication & profiles
+- [ ] Booking history & management
 - [ ] Reviews & ratings system
+- [ ] Wishlist/favorites
+- [ ] Advanced search & filters
+- [ ] Real-time availability checking
+- [ ] Multi-month calendar picker
+- [ ] More VR360 panoramas with hotspots
+
+### Admin Panel
+- [ ] Dashboard with analytics
+- [ ] Manage rooms & bookings
+- [ ] Voucher management
+- [ ] Content management system
+- [ ] Customer management
+
+### Optimization
+- [ ] Progressive Web App (PWA)
+- [ ] Service Worker caching
+- [ ] Image optimization (WebP, lazy loading)
+- [ ] Code splitting
+- [ ] SEO optimization
 
 ## 📄 License
 
-This project is for demonstration purposes.
+This project is for demonstration and educational purposes.
 
 ## 👨‍💻 Author
 
 **Tmy-andy**
 - GitHub: [@Tmy-andy](https://github.com/Tmy-andy)
+- Repository: [hotel-vr-demo](https://github.com/Tmy-andy/hotel-vr-demo)
 
-## 🙏 Credits
+## 🙏 Credits & Acknowledgments
 
-- **Pannellum** - VR360 viewer library
-- **Font Awesome** - Icons
-- **Unsplash** - Sample images
-- **Google Fonts** - Typography
+- **[Pannellum](https://pannellum.org/)** by Matthew Petroff - VR360 viewer library
+- **[Font Awesome](https://fontawesome.com/)** - Icon library
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility CSS framework
+- **[Google Fonts](https://fonts.google.com/)** - Plus Jakarta Sans typography
+- **[Unsplash](https://unsplash.com/)** - Sample images
+- **Link Hotel Vũng Tàu** - Inspiration and branding
+
+## 📞 Support & Contact
+
+For questions, suggestions, or issues, please:
+- Open an issue on GitHub
+- Contact: [Your email]
 
 ---
 
-Made with ❤️ for Link Hotel Vũng Tàu
-```
+**Made with ❤️ for Link Hotel Vũng Tàu**
 
-### 2. Với Local Server (Khuyến nghị)
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js với http-server
-npx http-server -p 8000
-
-# Sau đó truy cập: http://localhost:8000
+*Last updated: January 2025*# Sau đó truy cập: http://localhost:8000
 ```
 
 ## 🎮 Hướng Dẫn Sử Dụng
@@ -508,7 +657,7 @@ Customize spinner trong `css/style.css`.
 Nếu có thắc mắc hoặc cần support:
 - Check documentation trong code comments
 - Review console.log outputs
-- Contact: [your-email@example.com]
+- Contact: [tmy300803@gmail.com]
 
 ---
 
