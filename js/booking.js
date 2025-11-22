@@ -614,8 +614,8 @@ function showBookingSuccessModal(bookingData) {
     const voucherRoomType = document.getElementById('voucherRoomType');
     
     if (voucherHotelImg) voucherHotelImg.src = room.image || room.panorama || '';
-    if (voucherHotelName) voucherHotelName.textContent = 'Link Hotel Nha Trang';
-    if (voucherLocation) voucherLocation.textContent = '123 Trần Phú, Nha Trang, Khánh Hòa';
+    if (voucherHotelName) voucherHotelName.textContent = 'Link Hotel Vũng Tàu';
+    if (voucherLocation) voucherLocation.textContent = '123 Trần Phú, Vũng Tàu, Khánh Hòa';
     
     if (voucherCheckin) voucherCheckin.textContent = formatDate(bookingData.checkIn);
     if (voucherCheckout) voucherCheckout.textContent = formatDate(bookingData.checkOut);

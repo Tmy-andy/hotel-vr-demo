@@ -1,7 +1,7 @@
 // ===== Navigation Module =====
 
 import { state, elements, pageTitles } from './state.js';
-import { hideVRTitleOverlay } from './vr-viewer.js';
+import { hideVRTitleOverlay, loadVRPanorama, showVRTitleOverlay } from './vr-viewer.js';
 import { 
     openContentPanel, 
     closeContentPanel, 
@@ -98,6 +98,50 @@ export function setupEventListeners() {
         elements.btnBookRoom.addEventListener('click', () => {
             // Always open cart modal with all rooms, regardless of current section
             openBookingModalCart();
+        });
+    }
+    
+    // Overview button - Load hotel overview VR
+    const overviewBtn = document.getElementById('overviewBtn');
+    if (overviewBtn) {
+        overviewBtn.addEventListener('click', () => {
+            console.log('🏨 Overview button clicked');
+            
+            // Load default panorama from hotelInfo
+            if (state.hotelData && state.hotelData.hotelInfo && state.hotelData.hotelInfo.defaultPanorama) {
+                const lang = state.currentLanguage;
+                const hotelName = state.hotelData.hotelInfo.name[lang] || state.hotelData.hotelInfo.name.vi;
+                
+                console.log('🏨 Loading overview VR:', hotelName);
+                
+                // Create fake item object for loadVRPanorama
+                const overviewItem = {
+                    panoramaUrl: state.hotelData.hotelInfo.defaultPanorama,
+                    name: state.hotelData.hotelInfo.name
+                };
+                
+                // Load VR panorama
+                loadVRPanorama(overviewItem);
+                
+                // Close panels (no title overlay for overview)
+                closeContentPanel();
+                closeRoomInfoPanel();
+            } else {
+                console.error('❌ No default panorama found in hotelInfo');
+            }
+        });
+    }
+    
+    // Gallery button - Open gallery panel
+    const galleryBtn = document.getElementById('galleryBtn');
+    if (galleryBtn) {
+        galleryBtn.addEventListener('click', () => {
+            console.log('🖼️ Gallery button clicked');
+            if (typeof openGalleryPanel === 'function') {
+                openGalleryPanel();
+            } else {
+                console.error('❌ openGalleryPanel function not found');
+            }
         });
     }
     

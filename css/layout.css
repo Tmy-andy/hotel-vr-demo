@@ -80,6 +80,67 @@
     position: relative;
 }
 
+/* Tooltip for nav items - TRUE Glassmorphism */
+.nav-item::after {
+    content: attr(title);
+    position: absolute;
+    left: calc(100% + 16px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px) scale(0.95);
+    /* TRUE Glassmorphism - Transparent with strong blur */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                0 2px 8px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* Arrow indicator */
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 8px solid rgba(255, 255, 255, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10000;
+    filter: drop-shadow(-1px 0 3px rgba(0, 0, 0, 0.2));
+}
+
+.nav-item:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0) scale(1);
+}
+
+.nav-item:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
 .nav-item svg {
     width: 24px;
     height: 24px;
@@ -102,10 +163,13 @@
     box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
 }
 
+/* Active indicator bar */
 .nav-item.active::before {
     content: '';
     position: absolute;
     left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 4px;
     height: 30px;
     background: var(--accent-color);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Hotel VR360 - Khách Sạn Cao Cấp Nha Trang</title>
+    <title>Link Hotel VR360 - Khách Sạn Cao Cấp Vũng Tàu</title>
 
     <!-- Pannellum VR Viewer -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
@@ -13,11 +13,14 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Custom CSS - REFACTORED (Modular Structure) -->
     <link rel="stylesheet" href="css/style-new.css">
     <link rel="stylesheet" href="css/toggle-btn.css">
     <link rel="stylesheet" href="css/booking-cart.css">
-    
+
     <!-- OLD MONOLITHIC CSS (Backup - có thể xóa sau khi test OK) -->
     <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
@@ -216,6 +219,21 @@
 
         <button class="action-btn" id="fullscreenBtn" title="Toàn màn hình">
             <i class="fa-solid fa-expand"></i>
+        </button>
+
+        <button class="action-btn" id="overviewBtn" title="Xem tổng quan">
+            <i class="fa-solid fa-hotel"></i>
+        </button>
+
+        <button class="action-btn" id="galleryBtn" title="Thư viện">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-images-icon lucide-images">
+                <path d="m22 11-1.296-1.296a2.4 2.4 0 0 0-3.408 0L11 16" />
+                <path d="M4 8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2" />
+                <circle cx="13" cy="7" r="1" fill="currentColor" />
+                <rect x="8" y="2" width="14" height="14" rx="2" />
+            </svg>
         </button>
     </div>
 
@@ -427,7 +445,8 @@
                             <span class="date-label">Ngày trả phòng:</span>
                             <span class="date-value" id="summaryCheckOut">--/--/----</span>
                         </div>
-                        <p class="stay-duration">Thời gian lưu trú: <strong><span id="summaryNights">0</span> đêm</strong></p>
+                        <p class="stay-duration">Thời gian lưu trú: <strong><span id="summaryNights">0</span>
+                                đêm</strong></p>
                     </div>
 
                     <!-- Calendar Section (Mini) -->
@@ -466,7 +485,8 @@
                     <!-- Price Breakdown -->
                     <div class="new-price-breakdown">
                         <div class="new-price-row">
-                            <span>Tiền phòng (<span id="totalRoomsCount">0</span> phòng, <span id="summaryNightsCount">0</span> đêm)</span>
+                            <span>Tiền phòng (<span id="totalRoomsCount">0</span> phòng, <span
+                                    id="summaryNightsCount">0</span> đêm)</span>
                             <span id="summaryRoomPrice">0đ</span>
                         </div>
                         <div class="new-price-row">
@@ -482,7 +502,8 @@
                     <!-- Voucher Input -->
                     <div class="new-voucher-section">
                         <div class="new-voucher-input-wrapper">
-                            <input type="text" id="voucherInput" placeholder="Nhập mã giảm giá" class="new-voucher-input">
+                            <input type="text" id="voucherInput" placeholder="Nhập mã giảm giá"
+                                class="new-voucher-input">
                             <button type="button" id="applyVoucherBtn" class="new-apply-voucher-btn">Áp dụng</button>
                         </div>
                         <p class="voucher-message" id="voucherMessage"></p>
@@ -566,7 +587,7 @@
                 <div class="qr-progress-bar" id="qrProgressBar"></div>
                 <p class="qr-redirect-text">Quét mã QR và thanh toán để hoàn tất đặt phòng</p>
             </div>
-            
+
             <div class="qr-actions">
                 <button class="qr-confirm-btn" id="qrConfirmPayment">
                     <i class="fas fa-check-circle"></i>
@@ -697,7 +718,8 @@
 
     <!-- JavaScript - ES6 Modules (REFACTORED) -->
     <script type="module" src="js/main-new.js"></script>
-    
+    <script src="js/gallery.js"></script>
+
     <!-- OLD MONOLITHIC SCRIPT (Backup - có thể xóa sau khi test OK) -->
     <!-- <script src="js/main.js"></script> -->
 </body>

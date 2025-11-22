@@ -765,3 +765,14 @@
         transform: translateY(0);
     }
 }
+
+/* ===== GALLERY STYLES (Tailwind-based from thu-vien.html) ===== */
+/* Most styles are inline Tailwind classes, minimal custom CSS needed */
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+

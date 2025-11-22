@@ -1,6 +1,6 @@
 # 🏨 Link Hotel VR360 - Virtual Hotel Experience
 
-Ứng dụng web VR360 hiện đại cho khách sạn Link Hotel Nha Trang, cho phép khách hàng trải nghiệm khách sạn với công nghệ xem 360 độ, đặt phòng trực tuyến và sử dụng voucher ưu đãi.
+Ứng dụng web VR360 hiện đại cho khách sạn Link Hotel Vũng Tàu, cho phép khách hàng trải nghiệm khách sạn với công nghệ xem 360 độ, đặt phòng trực tuyến và sử dụng voucher ưu đãi.
 
 ## ✨ Tính Năng Chính
 
@@ -299,7 +299,7 @@ This project is for demonstration purposes.
 
 ---
 
-Made with ❤️ for Link Hotel Nha Trang
+Made with ❤️ for Link Hotel Vũng Tàu
 ```
 
 ### 2. Với Local Server (Khuyến nghị)

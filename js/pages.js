@@ -15,7 +15,7 @@ export function renderIntroduction() {
             <section class="intro-hero-banner">
                 <div class="hero-overlay"></div>
                 <div class="hero-text">
-                    <h1 class="hero-title">BOUTIQUE RESORT IN THE<br>HEART OF NHA TRANG</h1>
+                    <h1 class="hero-title">BOUTIQUE RESORT IN THE<br>HEART OF VŨNG TÀU</h1>
                     <div class="hero-stats">
                         <div class="stat-item">
                             <div class="stat-number">21</div>
@@ -36,7 +36,7 @@ export function renderIntroduction() {
             <!-- About Section -->
             <section class="intro-about">
                 <p class="about-text">
-                    Link nằm trong trung tâm thành phố Nha Trang là một kiệt tác kiến trúc 
+                    Link nằm trong trung tâm thành phố Vũng Tàu là một kiệt tác kiến trúc 
                     cung cấp chỗ ở đương đại với dịch vụ spa và đường đi bộ leo núi tuyệt vời.
                 </p>
             </section>
