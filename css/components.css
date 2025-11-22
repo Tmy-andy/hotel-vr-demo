@@ -776,3 +776,60 @@
     overflow: hidden;
 }
 
+/* Gallery Mobile Landscape Optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+    /* Smaller grid items for landscape mobile */
+    .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3.xl\:grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 12px !important;
+        padding: 8px !important;
+    }
+    
+    /* Reduce aspect ratio for smaller cards */
+    .aspect-\[3\/4\] {
+        aspect-ratio: 1/1 !important;
+    }
+    
+    /* Smaller text */
+    .text-base {
+        font-size: 13px !important;
+    }
+    
+    /* Reduce padding */
+    .p-4 {
+        padding: 12px !important;
+    }
+    
+    /* Smaller play button */
+    .w-16.h-16 {
+        width: 48px !important;
+        height: 48px !important;
+    }
+    
+    /* Reduce title size */
+    .text-4xl {
+        font-size: 24px !important;
+    }
+    
+    .md\:text-5xl {
+        font-size: 28px !important;
+    }
+    
+    /* Compact tabs */
+    .pt-8 {
+        padding-top: 16px !important;
+    }
+    
+    .pb-3 {
+        padding-bottom: 8px !important;
+    }
+}
+
+/* Tablet Landscape - Medium screens landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3.xl\:grid-cols-4 {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 16px !important;
+    }
+}
+

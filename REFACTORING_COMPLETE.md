@@ -1,4 +1,4 @@
-# ✅ REFACTORING HOÀN TẤT
+# ✅ REFACTORING
 
 ## 📊 Tổng Quan
 
@@ -87,8 +87,6 @@
 **Main Entry:** `js/main-new.js` (type="module")
 
 ---
-
-## 🔧 Cách Sử Dụng
 
 ### 1. Cấu Trúc File
 
